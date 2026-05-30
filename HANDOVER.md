@@ -37,7 +37,7 @@ git pull origin main
 ```bash
 pip install -r requirements.txt
 ```
-
+Download train.json dari kaggle lalu masukan ke data/processed
 
 ### 1.3 Verifikasi Data
 
