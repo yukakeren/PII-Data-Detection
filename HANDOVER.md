@@ -29,7 +29,6 @@
 ### 1.1 Clone/Sync Repository
 
 ```bash
-cd /home/ata/school/fp-ml
 git pull origin main
 ```
 
