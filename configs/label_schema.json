@@ -1,0 +1,17 @@
+{
+  "O": 0,
+  "B-NAME_STUDENT": 1,
+  "I-NAME_STUDENT": 2,
+  "B-EMAIL": 3,
+  "I-EMAIL": 4,
+  "B-USERNAME": 5,
+  "I-USERNAME": 6,
+  "B-ID_NUM": 7,
+  "I-ID_NUM": 8,
+  "B-PHONE_NUM": 9,
+  "I-PHONE_NUM": 10,
+  "B-URL_PERSONAL": 11,
+  "I-URL_PERSONAL": 12,
+  "B-STREET_ADDRESS": 13,
+  "I-STREET_ADDRESS": 14
+}
