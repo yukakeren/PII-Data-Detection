@@ -28,10 +28,10 @@ pii-shield/
 │   ├── split_data.py                  ← Script split (sudah dijalankan)
 │   └── verify_split.py                ← Script verify (sudah dijalankan)
 ├── models/
-│   ├── baseline/                      ← Untuk Naura (Logistic Reg, SVM)
-│   ├── crf/                           ← Untuk Farras
-│   ├── boosting/                      ← Untuk Erica
-│   └── transformer/                   ← Untuk Naufal
+│   ├── baseline/                      
+│   ├── crf/                           
+│   ├── boosting/                      
+│   └── transformer/                   
 ├── notebooks/
 │   └── [empty]                        ← Jupyter notebooks per model
 ├── results/
@@ -42,7 +42,7 @@ pii-shield/
 ├── app/
 │   └── streamlit_app.py               ← Demo web app
 ├── README.md                          ← Dokumentasi project
-├── SETUP.md                           ← File ini
+├── SETUP.md                           
 └── requirements.txt                   ← Dependencies
 ```
 

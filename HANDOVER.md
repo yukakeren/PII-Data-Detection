@@ -38,7 +38,6 @@ git pull origin main
 pip install -r requirements.txt
 ```
 
-Jika ada error, hubungi Qurrata.
 
 ### 1.3 Verifikasi Data
 
