@@ -1,0 +1,134 @@
+{
+    "model": "crf",
+    "total_tokens": 692242,
+    "token_level": {
+        "precision": 0.8871951219512195,
+        "recall": 0.7185185185185186,
+        "f1": 0.7939972714870396,
+        "total_tp": 291,
+        "total_fp": 37,
+        "total_fn": 114,
+        "per_class": {
+            "B-EMAIL": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "tp": 5,
+                "fp": 0,
+                "fn": 0
+            },
+            "B-ID_NUM": {
+                "precision": 1.0,
+                "recall": 0.7333333333333333,
+                "f1": 0.846153846153846,
+                "tp": 11,
+                "fp": 0,
+                "fn": 4
+            },
+            "B-NAME_STUDENT": {
+                "precision": 0.8698630136986302,
+                "recall": 0.6580310880829016,
+                "f1": 0.7492625368731562,
+                "tp": 127,
+                "fp": 19,
+                "fn": 66
+            },
+            "B-PHONE_NUM": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "B-STREET_ADDRESS": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "B-URL_PERSONAL": {
+                "precision": 0.9583333333333334,
+                "recall": 0.8214285714285714,
+                "f1": 0.8846153846153847,
+                "tp": 23,
+                "fp": 1,
+                "fn": 5
+            },
+            "B-USERNAME": {
+                "precision": 0,
+                "recall": 0.0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 2
+            },
+            "I-EMAIL": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "I-ID_NUM": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "I-NAME_STUDENT": {
+                "precision": 0.8802816901408451,
+                "recall": 0.7716049382716049,
+                "f1": 0.8223684210526316,
+                "tp": 125,
+                "fp": 17,
+                "fn": 37
+            },
+            "I-PHONE_NUM": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "I-STREET_ADDRESS": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "I-URL_PERSONAL": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            },
+            "I-USERNAME": {
+                "precision": 0,
+                "recall": 0,
+                "f1": 0,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0
+            }
+        }
+    },
+    "entity_level": {
+        "precision": 0.8870967741935484,
+        "recall": 0.6790123456790124,
+        "f1": 0.7692307692307693,
+        "total_tp": 0,
+        "total_fp": 0,
+        "total_fn": 0
+    }
+}
