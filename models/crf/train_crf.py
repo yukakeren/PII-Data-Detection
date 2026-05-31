@@ -1,8 +1,20 @@
 import os
+import sys
 import json
 import joblib
 import pandas as pd
 import sklearn_crfsuite
+
+BASE_DIR = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "../.."
+    )
+)
+
+sys.path.append(BASE_DIR)
+
+from src.data_loader import DataLoader
 from sklearn.metrics import classification_report
 from seqeval.metrics import (
     precision_score,
@@ -55,11 +67,6 @@ os.makedirs(PRED_DIR, exist_ok=True)
 os.makedirs(METRIC_DIR, exist_ok=True)
 
 
-def load_json(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
 def prepare_dataset(data):
     X = []
     y = []
@@ -99,9 +106,19 @@ def prepare_dataset(data):
 
 print("Loading dataset...")
 
-train_data = load_json(TRAIN_PATH)
-val_data = load_json(VAL_PATH)
-test_data = load_json(TEST_PATH)
+loader = DataLoader()
+
+train_data = loader.load_raw_json(
+    TRAIN_PATH
+)
+
+val_data = loader.load_raw_json(
+    VAL_PATH
+)
+
+test_data = loader.load_raw_json(
+    TEST_PATH
+)
 
 X_train, y_train = prepare_dataset(train_data)
 X_val, y_val = prepare_dataset(val_data)
