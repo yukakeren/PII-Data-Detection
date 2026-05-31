@@ -178,7 +178,7 @@ def evaluate_from_csv(csv_path: str, model_name: str = "unknown") -> Dict:
     y_true = []
     y_pred = []
     
-    with open(csv_path, 'r') as f:
+    with open(csv_path, 'r', encoding='utf-8') as f:        
         reader = csv.DictReader(f)
         for row in reader:
             y_true.append(row['true_label'])

@@ -301,12 +301,23 @@ rows = []
 
 for doc, pred_labels in zip(test_data, test_preds):
     doc_id = doc["document"]
-    tokens = doc["tokens"]
-    true_labels = doc["labels"]
+
+    filtered_tokens = []
+    filtered_labels = []
+
+    for token, label in zip(
+        doc["tokens"],
+        doc["labels"]
+    ):
+        if token.strip() == "":
+            continue
+
+        filtered_tokens.append(token)
+        filtered_labels.append(label)
 
     for token, true_label, pred_label in zip(
-        tokens,
-        true_labels,
+        filtered_tokens,
+        filtered_labels,
         pred_labels
     ):
         rows.append({
