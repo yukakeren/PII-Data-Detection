@@ -22,6 +22,18 @@ data/processed/
 
 The final evaluation is performed on `test_internal.json`.
 
+## Preprocessing
+
+The preprocessing stage consists of:
+
+- tokenization (provided by the dataset)
+- lowercasing
+- token-level feature extraction
+- context feature extraction (previous and next token)
+- TF-IDF vectorization using character n-grams (2–4)
+
+Stopword removal, stemming, and lemmatization are not applied because they may remove useful information required for PII identification.
+
 ## Feature Engineering
 
 Each token is converted into handcrafted token-level features and TF-IDF representation.
@@ -126,6 +138,19 @@ models/baseline/linear_svm_model.joblib
 ```
 
 ## Results
+### Performance Visualization
+
+#### Token-Level Performance Comparison
+
+![Token Level Comparison](Figure_1.png)
+
+The token-level comparison shows that Linear SVM significantly outperforms Logistic Regression in terms of Precision and F1-Score. Logistic Regression achieves extremely high Recall but suffers from a large number of false positives, resulting in very low Precision and F1-Score.
+
+#### Entity-Level Performance Comparison
+
+![Entity Level Comparison](Figure_2.png)
+
+The entity-level comparison also shows that Linear SVM provides more balanced performance. Logistic Regression can detect many entities but produces excessive false positives, leading to poor entity-level Precision and F1-Score.
 
 ### Logistic Regression
 
