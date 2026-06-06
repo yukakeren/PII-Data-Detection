@@ -72,7 +72,7 @@ LogisticRegression(
 
 Explanation:
 
-- `class_weight="balanced"` is used to handle class imbalance because non-PII tokens are much more frequent than PII tokens.
+- `class_weight="balanced"` is used to handle class imbalance because non-PII tokens are more frequent than PII tokens.
 - `max_iter=150` sets the maximum number of optimization iterations.
 - `solver="saga"` is used because it supports large-scale sparse features.
 - `tol=1e-3` controls the stopping tolerance. A larger tolerance helps training finish faster.
@@ -138,53 +138,52 @@ models/baseline/linear_svm_model.joblib
 ```
 
 ## Results
+
 ### Performance Visualization
 
 #### Token-Level Performance Comparison
 
 ![Token Level Comparison](Figure_1.png)
 
-The token-level comparison shows that Linear SVM significantly outperforms Logistic Regression in terms of Precision and F1-Score. Logistic Regression achieves extremely high Recall but suffers from a large number of false positives, resulting in very low Precision and F1-Score.
-
 #### Entity-Level Performance Comparison
 
 ![Entity Level Comparison](Figure_2.png)
 
-The entity-level comparison also shows that Linear SVM provides more balanced performance. Logistic Regression can detect many entities but produces excessive false positives, leading to poor entity-level Precision and F1-Score.
-
 ### Logistic Regression
 
 ```text
-Token-level Precision : 0.0128
-Token-level Recall    : 0.9785
-Token-level F1-score  : 0.0253
+Token-level Precision : 0.3909
+Token-level Recall    : 0.9230
+Token-level F1-score  : 0.5492
 
-Entity-level Precision: 0.0073
-Entity-level Recall   : 0.7942
-Entity-level F1-score : 0.0146
+Entity-level Precision: 0.2177
+Entity-level Recall   : 0.7730
+Entity-level F1-score : 0.3398
 ```
 
-Logistic Regression achieved very high recall but very low precision. This means the model detected many PII tokens, but also produced many false positives.
+Logistic Regression achieved high recall but lower precision. This means the model can detect many PII tokens, but still produces more false positives compared to Linear SVM.
 
 ### Linear SVM
 
 ```text
-Token-level Precision : 0.7565
-Token-level Recall    : 0.6244
-Token-level F1-score  : 0.6841
+Token-level Precision : 0.8172
+Token-level Recall    : 0.8708
+Token-level F1-score  : 0.8431
 
-Entity-level Precision: 0.4336
-Entity-level Recall   : 0.4568
-Entity-level F1-score : 0.4449
+Entity-level Precision: 0.5660
+Entity-level Recall   : 0.7397
+Entity-level F1-score : 0.6413
 ```
 
 Linear SVM achieved better and more balanced performance compared to Logistic Regression.
 
 ## Short Analysis
 
-Logistic Regression tends to over-detect PII tokens. It has a very high recall score, but the precision is very low because many non-PII tokens are incorrectly predicted as PII.
+Logistic Regression has a strong recall score, meaning it can detect many PII tokens. However, its precision is lower, indicating that it still predicts some non-PII tokens as PII.
 
-Linear SVM performs better as a baseline model. It produces a more balanced result between precision and recall, with a token-level F1-score of 0.6841 and an entity-level F1-score of 0.4449.
+Linear SVM performs better as a baseline model. It produces a more balanced result between precision and recall, with a token-level F1-score of 0.8431 and an entity-level F1-score of 0.6413.
+
+The updated dataset improves baseline performance significantly compared to the previous dataset, especially for Logistic Regression.
 
 ## Conclusion
 
