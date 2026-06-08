@@ -32,9 +32,9 @@ BASE_DIR = os.path.abspath(
 
 DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
 
-TRAIN_PATH = os.path.join(DATA_DIR, "train(B).json")
+TRAIN_PATH = os.path.join(DATA_DIR, "train.json")
 VAL_PATH = os.path.join(DATA_DIR, "val.json")
-TEST_PATH = os.path.join(DATA_DIR, "test(B).json")
+TEST_PATH = os.path.join(DATA_DIR, "test_internal.json")
 
 LABEL_SCHEMA_PATH = os.path.join(
     BASE_DIR,
