@@ -1,0 +1,176 @@
+{
+  "model": "deberta_overnight_20260608",
+  "base_model": "microsoft/deberta-v3-small",
+  "total_tokens": 701426,
+  "token_level": {
+    "precision": 0.8724,
+    "recall": 0.9163,
+    "f1": 0.8938,
+    "total_tp": 383,
+    "total_fp": 56,
+    "total_fn": 35,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1": 0.9677,
+        "tp": 15,
+        "fp": 0,
+        "fn": 1
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.8267,
+        "recall": 0.8815,
+        "f1": 0.8532,
+        "tp": 186,
+        "fp": 39,
+        "fn": 25
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.875,
+        "recall": 0.5833,
+        "f1": 0.7,
+        "tp": 7,
+        "fp": 1,
+        "fn": 5
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.9144,
+        "recall": 0.9828,
+        "f1": 0.9474,
+        "tp": 171,
+        "fp": 16,
+        "fn": 3
+      },
+      "I-URL_PERSONAL": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.834,
+    "recall": 0.8683,
+    "f1": 0.8508,
+    "total_tp": 211,
+    "total_fp": 42,
+    "total_fn": 32
+  },
+  "validation_metrics": {
+    "token_level": {
+      "precision": 0.8518,
+      "recall": 0.8938,
+      "f1": 0.8723,
+      "total_tp": 362,
+      "total_fp": 63,
+      "total_fn": 43,
+      "per_class": {
+        "B-EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        },
+        "B-ID_NUM": {
+          "precision": 0.9231,
+          "recall": 0.8,
+          "f1": 0.8571,
+          "tp": 12,
+          "fp": 1,
+          "fn": 3
+        },
+        "B-NAME_STUDENT": {
+          "precision": 0.866,
+          "recall": 0.8705,
+          "f1": 0.8682,
+          "tp": 168,
+          "fp": 26,
+          "fn": 25
+        },
+        "B-URL_PERSONAL": {
+          "precision": 0.931,
+          "recall": 0.9643,
+          "f1": 0.9474,
+          "tp": 27,
+          "fp": 2,
+          "fn": 1
+        },
+        "B-USERNAME": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2
+        },
+        "I-NAME_STUDENT": {
+          "precision": 0.8721,
+          "recall": 0.9259,
+          "f1": 0.8982,
+          "tp": 150,
+          "fp": 22,
+          "fn": 12
+        },
+        "I-PHONE_NUM": {
+          "precision": 0.0,
+          "recall": 0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 12,
+          "fn": 0
+        }
+      }
+    },
+    "entity_level": {
+      "precision": 0.8313,
+      "recall": 0.8519,
+      "f1": 0.8415,
+      "total_tp": 207,
+      "total_fp": 42,
+      "total_fn": 36
+    },
+    "total_tokens": 692242
+  },
+  "training": {
+    "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "epochs": 5,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 1e-05,
+    "max_length": 256,
+    "chunk_size": 128,
+    "loss_mode": "sqrt_balanced",
+    "warmup_steps": 859,
+    "train_chunks": 27476,
+    "val_chunks": 5909,
+    "test_chunks": 5992,
+    "seed": 42,
+    "optim": "adamw_torch",
+    "max_grad_norm": 0.5,
+    "bf16": false,
+    "train_metrics": {
+      "train_runtime": 7468.9595,
+      "train_samples_per_second": 18.393,
+      "train_steps_per_second": 1.15,
+      "total_flos": 8976995085035520.0,
+      "train_loss": 0.2922034568417865,
+      "epoch": 5.0
+    },
+    "best_metric": 0.8438,
+    "best_checkpoint": "models/transformer/deberta-pii-overnight/checkpoint-5154"
+  }
+}

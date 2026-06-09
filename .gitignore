@@ -55,6 +55,15 @@ models/**/*.h5
 
 # Results (predictions)
 results/predictions/**/*.csv
+results/metrics/*smoke*.json
+results/metrics/*default*.json
+
+# Local experiment artifacts
+.playwright-mcp/
+deberta_optimized/
+models/transformer/distilbert-pii/
+models/transformer/deberta-pii-overnight/
+models/transformer/**/checkpoint-*/
 
 # Logs
 *.log
@@ -73,4 +82,3 @@ Thumbs.db
 # Config with credentials
 .env
 .env.local
-
