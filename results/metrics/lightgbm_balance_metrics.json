@@ -1,0 +1,8 @@
+{
+  "token_precision": 0.1343,
+  "token_recall": 0.7082,
+  "token_f1": 0.2257,
+  "entity_precision": 0.092,
+  "entity_recall": 0.6412,
+  "entity_f1": 0.1609
+}
