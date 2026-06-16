@@ -1,8 +1,110 @@
 {
-  "token_precision": 0.2323,
-  "token_recall": 0.6018,
-  "token_f1": 0.3352,
-  "entity_precision": 0.1592,
-  "entity_recall": 0.5172,
-  "entity_f1": 0.2435
+  "token_level": {
+    "precision": 0.2323,
+    "recall": 0.6018,
+    "f1": 0.3352,
+    "total_tp": 396,
+    "total_fp": 1309,
+    "total_fn": 262,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 0.197,
+        "recall": 0.52,
+        "f1": 0.2857,
+        "tp": 13,
+        "fp": 53,
+        "fn": 12
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.2943,
+        "recall": 0.5813,
+        "f1": 0.3908,
+        "tp": 186,
+        "fp": 446,
+        "fn": 134
+      },
+      "B-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 17,
+        "fn": 0
+      },
+      "B-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 9,
+        "fn": 0
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.4545,
+        "recall": 0.8,
+        "f1": 0.5797,
+        "tp": 20,
+        "fp": 24,
+        "fn": 5
+      },
+      "B-USERNAME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 177,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 42,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.2864,
+        "recall": 0.6079,
+        "f1": 0.3894,
+        "tp": 169,
+        "fp": 421,
+        "fn": 109
+      },
+      "I-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 19,
+        "fn": 0
+      },
+      "I-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 101,
+        "fn": 0
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.1592,
+    "recall": 0.5172,
+    "f1": 0.2435,
+    "total_tp": 196,
+    "total_fp": 1035,
+    "total_fn": 183
+  },
+  "model": "lightgbm_imbalance",
+  "total_tokens": 1260090
 }

@@ -1,0 +1,78 @@
+{
+  "token_level": {
+    "precision": 0.8645,
+    "recall": 0.9696,
+    "f1": 0.914,
+    "total_tp": 638,
+    "total_fp": 100,
+    "total_fn": 20,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 0.6571,
+        "recall": 0.92,
+        "f1": 0.7667,
+        "tp": 23,
+        "fp": 12,
+        "fn": 2
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.9139,
+        "recall": 0.9625,
+        "f1": 0.9376,
+        "tp": 308,
+        "fp": 29,
+        "fn": 12
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.3623,
+        "recall": 1.0,
+        "f1": 0.5319,
+        "tp": 25,
+        "fp": 44,
+        "fn": 0
+      },
+      "B-USERNAME": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.9481,
+        "recall": 0.9856,
+        "f1": 0.9665,
+        "tp": 274,
+        "fp": 15,
+        "fn": 4
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.7987,
+    "recall": 0.9525,
+    "f1": 0.8688,
+    "total_tp": 361,
+    "total_fp": 91,
+    "total_fn": 18
+  },
+  "model": "hybrid",
+  "total_tokens": 1161421
+}
