@@ -51,7 +51,7 @@ Output yang diharapkan:
 - Test: 1,022 documents
 - ✓ Split verification PASSED
 
-**Jika ada error**, jangan lanjut — hubungi Qurrata.
+**Jika ada error**, jangan lanjut.
 
 ---
 

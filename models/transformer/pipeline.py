@@ -14,7 +14,14 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from models.hybrid.pipeline import REDACTION_LABELS, TOKEN_PATTERN
+from models.hybrid.pipeline import (
+    EMAIL_REGEX,
+    ID_REGEX,
+    PHONE_REGEX,
+    REDACTION_LABELS,
+    TOKEN_PATTERN,
+    URL_REGEX,
+)
 
 
 @dataclass
@@ -39,7 +46,17 @@ class TransformerPIIPipeline:
 
     DEFAULT_MODEL_DIRS = {
         "distilbert": REPO_ROOT / "models" / "transformer" / "distilbert-pii",
-        "deberta": REPO_ROOT / "models" / "transformer" / "deberta-pii",
+        "deberta": REPO_ROOT / "models" / "transformer" / "deberta-pii-overnight",
+    }
+    NAME_FILLER_TOKENS = {
+        "my",
+        "name",
+        "is",
+        "i",
+        "am",
+        "this",
+        "nama",
+        "saya",
     }
 
     def __init__(self, model_dirs: Optional[Dict[str, str]] = None, chunk_size: int = 128):
@@ -119,6 +136,12 @@ class TransformerPIIPipeline:
             model_key=model_key,
             min_confidence=min_confidence,
         )
+        labels, sources, confidences = self._post_process_predictions(
+            tokens=content_tokens,
+            labels=labels,
+            sources=sources,
+            confidences=confidences,
+        )
 
         entities = self.labels_to_entities(text, content_tokens, labels, sources)
         token_rows = self.build_token_rows(content_tokens, labels, sources, confidences)
@@ -193,6 +216,71 @@ class TransformerPIIPipeline:
             confidences.extend(chunk_confidences)
 
         return labels, sources, confidences
+
+    def _post_process_predictions(
+        self,
+        tokens: Sequence[TokenSpan],
+        labels: Sequence[str],
+        sources: Sequence[str],
+        confidences: Sequence[float],
+    ) -> tuple[List[str], List[str], List[float]]:
+        clean_labels = list(labels)
+        clean_sources = list(sources)
+        clean_confidences = list(confidences)
+
+        for index, (token, label) in enumerate(zip(tokens, clean_labels)):
+            if label == "O":
+                continue
+
+            _, entity_type = label.split("-", 1)
+            token_text = token.text
+            is_valid_structured = True
+
+            if entity_type == "EMAIL":
+                is_valid_structured = bool(EMAIL_REGEX.fullmatch(token_text))
+            elif entity_type == "URL_PERSONAL":
+                is_valid_structured = bool(URL_REGEX.fullmatch(token_text))
+            elif entity_type == "PHONE_NUM":
+                is_valid_structured = bool(PHONE_REGEX.fullmatch(token_text))
+            elif entity_type == "ID_NUM":
+                is_valid_structured = bool(ID_REGEX.fullmatch(token_text))
+
+            if not is_valid_structured:
+                clean_labels[index] = "O"
+                clean_sources[index] = ""
+                clean_confidences[index] = 0.0
+
+        index = 0
+        while index < len(clean_labels):
+            label = clean_labels[index]
+            if label == "O" or not label.endswith("NAME_STUDENT"):
+                index += 1
+                continue
+
+            span_end = index
+            while span_end < len(clean_labels) and clean_labels[span_end] != "O" and clean_labels[span_end].endswith("NAME_STUDENT"):
+                span_end += 1
+
+            trimmed_start = index
+            while trimmed_start < span_end:
+                candidate = tokens[trimmed_start].text.lower()
+                if candidate in self.NAME_FILLER_TOKENS:
+                    clean_labels[trimmed_start] = "O"
+                    clean_sources[trimmed_start] = ""
+                    clean_confidences[trimmed_start] = 0.0
+                    trimmed_start += 1
+                    continue
+                break
+
+            if trimmed_start < span_end:
+                clean_labels[trimmed_start] = "B-NAME_STUDENT"
+                for follow_index in range(trimmed_start + 1, span_end):
+                    if clean_labels[follow_index] != "O":
+                        clean_labels[follow_index] = "I-NAME_STUDENT"
+
+            index = span_end
+
+        return clean_labels, clean_sources, clean_confidences
 
     def _predict_single_chunk(
         self,

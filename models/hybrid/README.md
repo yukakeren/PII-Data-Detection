@@ -1,23 +1,32 @@
-# Hybrid Rule + ML for PII Detection
+# Hybrid Model (Regex + ML)
 
-This model is a practical extension of the CRF work: a rule-based detector for structured PII combined with an ML component for more contextual entities, especially `NAME_STUDENT`.
+This folder contains the implementation of the Hybrid Model for PII Shield.
 
-## What It Does
+## Approach
 
-- Regex rules for `EMAIL`, `URL_PERSONAL`, `PHONE_NUM`, and `ID_NUM`
-- Lightweight context rules for `USERNAME`, `NAME_STUDENT`, and `STREET_ADDRESS`
-- Optional integration with the CRF model when `models/crf/crf_model.pkl` is available
-- Redaction / anonymization into placeholders such as `[EMAIL]` and `[NAME_STUDENT]`
+The hybrid model combines Rule-based (Regex) predictions with the best available Machine Learning predictions:
+1. **Best ML Model Identification**: The script reads `results/metrics/` to dynamically select the ML model with the highest token-level F1 score.
+2. **Rule-based Layer**: It applies regular expressions to detect patterns such as Email, URL, Phone Number, and ID Number on each token.
+3. **Combination Strategy**:
+   - If a regex rule is triggered for a token, the rule's prediction is used.
+   - Otherwise, the ML model's prediction is used as the fallback.
+4. **Evaluation**: Finally, the hybrid predictions are evaluated using the standard `evaluate_from_csv` method to compare against the baseline ML.
 
-## Run from the CLI
+## Files
+
+- `hybrid_model.py`: The main script that applies the hybrid logic.
+- `README.md`: This file.
+
+## Running
+
+You can run the model by executing the notebook located at `notebooks/hybrid_ml_regex.ipynb` or by running the script directly from the root directory:
 
 ```bash
-python3 models/hybrid/predict.py "My name is Michael Jordan and my email is mjordan@nba.com"
+python3 models/hybrid/hybrid_model.py
 ```
 
-Available modes:
+## Results
 
-```bash
-python3 models/hybrid/predict.py "my username is student_123" --mode rules_only
-python3 models/hybrid/predict.py "My name is Farras" --mode crf_only
-```
+The predictions and metrics will be saved in:
+- **Predictions**: `results/predictions/hybrid_predictions.csv`
+- **Metrics**: `results/metrics/hybrid_metrics.json`

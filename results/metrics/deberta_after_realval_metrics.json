@@ -1,0 +1,240 @@
+{
+  "model": "deberta_after_llm_realval_20260614",
+  "base_model": "microsoft/deberta-v3-small",
+  "total_tokens": 1161421,
+  "token_level": {
+    "precision": 0.5014,
+    "recall": 0.8085,
+    "f1": 0.619,
+    "total_tp": 532,
+    "total_fp": 529,
+    "total_fn": 126,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 0.7,
+        "recall": 0.875,
+        "f1": 0.7778,
+        "tp": 7,
+        "fp": 3,
+        "fn": 1
+      },
+      "B-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 4,
+        "fn": 25
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.7064,
+        "recall": 0.7594,
+        "f1": 0.7319,
+        "tp": 243,
+        "fp": 101,
+        "fn": 77
+      },
+      "B-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 2,
+        "fn": 0
+      },
+      "B-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 1,
+        "fn": 0
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.3731,
+        "recall": 1.0,
+        "f1": 0.5435,
+        "tp": 25,
+        "fp": 42,
+        "fn": 0
+      },
+      "B-USERNAME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 4,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.4804,
+        "recall": 0.9245,
+        "f1": 0.6322,
+        "tp": 257,
+        "fp": 278,
+        "fn": 21
+      },
+      "I-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 18,
+        "fn": 0
+      },
+      "I-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 76,
+        "fn": 0
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.3762,
+    "recall": 0.7018,
+    "f1": 0.4899,
+    "total_tp": 266,
+    "total_fp": 441,
+    "total_fn": 113
+  },
+  "validation_metrics": {
+    "token_level": {
+      "precision": 0.5077,
+      "recall": 0.7714,
+      "f1": 0.6124,
+      "total_tp": 297,
+      "total_fp": 288,
+      "total_fn": 88,
+      "per_class": {
+        "B-EMAIL": {
+          "precision": 0.6667,
+          "recall": 0.6667,
+          "f1": 0.6667,
+          "tp": 4,
+          "fp": 2,
+          "fn": 2
+        },
+        "B-ID_NUM": {
+          "precision": 0.1,
+          "recall": 0.1667,
+          "f1": 0.125,
+          "tp": 1,
+          "fp": 9,
+          "fn": 5
+        },
+        "B-NAME_STUDENT": {
+          "precision": 0.6848,
+          "recall": 0.6528,
+          "f1": 0.6684,
+          "tp": 126,
+          "fp": 58,
+          "fn": 67
+        },
+        "B-PHONE_NUM": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 3
+        },
+        "B-STREET_ADDRESS": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "B-URL_PERSONAL": {
+          "precision": 0.359,
+          "recall": 1.0,
+          "f1": 0.5283,
+          "tp": 14,
+          "fp": 25,
+          "fn": 0
+        },
+        "B-USERNAME": {
+          "precision": 0.0,
+          "recall": 0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 9,
+          "fn": 0
+        },
+        "I-NAME_STUDENT": {
+          "precision": 0.4545,
+          "recall": 0.9375,
+          "f1": 0.6122,
+          "tp": 135,
+          "fp": 162,
+          "fn": 9
+        },
+        "I-PHONE_NUM": {
+          "precision": 0.5714,
+          "recall": 0.8889,
+          "f1": 0.6957,
+          "tp": 8,
+          "fp": 6,
+          "fn": 1
+        },
+        "I-STREET_ADDRESS": {
+          "precision": 0.3462,
+          "recall": 1.0,
+          "f1": 0.5143,
+          "tp": 9,
+          "fp": 17,
+          "fn": 0
+        }
+      }
+    },
+    "entity_level": {
+      "precision": 0.3928,
+      "recall": 0.6323,
+      "f1": 0.4845,
+      "total_tp": 141,
+      "total_fp": 218,
+      "total_fn": 82
+    },
+    "total_tokens": 667377
+  },
+  "training": {
+    "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "epochs": 4,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 8e-06,
+    "max_length": 256,
+    "chunk_size": 128,
+    "loss_mode": "default",
+    "warmup_steps": 646,
+    "train_chunks": 25859,
+    "val_chunks": 5717,
+    "test_chunks": 9927,
+    "seed": 42,
+    "optim": "adamw_torch",
+    "max_grad_norm": 0.5,
+    "bf16": true,
+    "train_metrics": {
+      "train_runtime": 3667.521,
+      "train_samples_per_second": 28.203,
+      "train_steps_per_second": 1.764,
+      "total_flos": 6758949363922944.0,
+      "train_loss": 2.054161935841956,
+      "epoch": 4.0
+    },
+    "best_metric": 0.4888,
+    "best_checkpoint": "models/transformer/deberta-pii-after-llm-realval/checkpoint-6468"
+  }
+}
