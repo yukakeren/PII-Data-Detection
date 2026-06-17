@@ -1,0 +1,110 @@
+{
+  "token_level": {
+    "precision": 0.1502,
+    "recall": 0.7006,
+    "f1": 0.2474,
+    "total_tp": 461,
+    "total_fp": 2608,
+    "total_fn": 197,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 0.0741,
+        "recall": 0.48,
+        "f1": 0.1283,
+        "tp": 12,
+        "fp": 150,
+        "fn": 13
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.239,
+        "recall": 0.6781,
+        "f1": 0.3534,
+        "tp": 217,
+        "fp": 691,
+        "fn": 103
+      },
+      "B-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 31,
+        "fn": 0
+      },
+      "B-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 20,
+        "fn": 0
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.4032,
+        "recall": 1.0,
+        "f1": 0.5747,
+        "tp": 25,
+        "fp": 37,
+        "fn": 0
+      },
+      "B-USERNAME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 464,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 90,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.2358,
+        "recall": 0.7158,
+        "f1": 0.3547,
+        "tp": 199,
+        "fp": 645,
+        "fn": 79
+      },
+      "I-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 177,
+        "fn": 0
+      },
+      "I-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 303,
+        "fn": 0
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.1061,
+    "recall": 0.6253,
+    "f1": 0.1815,
+    "total_tp": 237,
+    "total_fp": 1996,
+    "total_fn": 142
+  },
+  "model": "lightgbm_balance",
+  "total_tokens": 1260090
+}
