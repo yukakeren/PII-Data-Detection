@@ -222,9 +222,9 @@ print_metrics(metrics)
    from src.data_loader import DataLoader
    
    loader = DataLoader()
-   train_data = loader.load_raw_json("data/processed/train.json")
-   val_data = loader.load_raw_json("data/processed/val.json")
-   test_data = loader.load_raw_json("data/processed/test_internal.json")
+   train_data = loader.load_raw_json("data/processed/new/train.json")
+   val_data = loader.load_raw_json("data/processed/new/val.json")
+   test_data = loader.load_raw_json("data/processed/new/test.json")
    ```
 
 3. **Handle Class Imbalance:**
@@ -234,20 +234,24 @@ print_metrics(metrics)
 4. **Training:**
    - Train pada train.json
    - Early stopping di val.json
-   - Test pada test_internal.json
+   - Test pada test.json
 
 #### Output Wajib
 
 **CSV Prediksi:**
 ```
-results/predictions/xgboost_predictions.csv
-results/predictions/lightgbm_predictions.csv
+results/predictions/xgboost_balance_predictions.csv
+results/predictions/xgboost_imbalance_predictions.csv
+results/predictions/lightgbm_balance_predictions.csv
+results/predictions/lightgbm_imbalance_predictions.csv
 ```
 
 **Metrics JSON:**
 ```
-results/metrics/xgboost_metrics.json
-results/metrics/lightgbm_metrics.json
+results/metrics/xgboost_balance_metrics.json
+results/metrics/xgboost_imbalance_metrics.json
+results/metrics/lightgbm_balance_metrics.json
+results/metrics/lightgbm_imbalance_metrics.json
 ```
 
 **Deskripsi model:**
