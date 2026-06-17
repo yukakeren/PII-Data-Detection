@@ -54,7 +54,7 @@ models/**/*.pt
 models/**/*.h5
 
 # Results (predictions)
-results/predictions/**/*.csv
+# results/predictions/**/*.csv
 results/metrics/*smoke*.json
 results/metrics/*default*.json
 
