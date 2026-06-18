@@ -81,9 +81,3 @@ Semua model menggunakan **probability threshold tuning** pada validation set:
 
 **Insight**: Model imbalance menghasilkan F1 lebih tinggi. Model balance menghasilkan recall lebih tinggi tetapi precision lebih rendah.
 
-
-
-- Training pada data imbalance (~3M tokens) membutuhkan waktu ~35 menit per model di Kaggle
-- XGBoost memerlukan GPU (CUDA) untuk training dalam waktu wajar
-- Class imbalance sangat ekstrem (O = 99.94%) sehingga F1 score terbatas
-- Beberapa class minoritas (B-PHONE_NUM, B-STREET_ADDRESS, B-USERNAME) sangat sulit dideteksi
