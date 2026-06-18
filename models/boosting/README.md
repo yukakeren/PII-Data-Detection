@@ -81,56 +81,7 @@ Semua model menggunakan **probability threshold tuning** pada validation set:
 
 **Insight**: Model imbalance menghasilkan F1 lebih tinggi. Model balance menghasilkan recall lebih tinggi tetapi precision lebih rendah.
 
-## Cara Menjalankan
 
-### Di Kaggle (Recommended)
-Jalankan notebook `notebooks/boosting.ipynb` di Kaggle dengan GPU accelerator enabled.
-
-### Lokal
-```bash
-cd PII-Data-Detection
-pip install -r models/boosting/requirements.txt
-
-# Jalankan via Python
-python -c "
-import sys; sys.path.insert(0, '.')
-from models.boosting.feature_extraction import *
-from models.boosting.train_lightgbm import *
-from models.boosting.train_xgboost import *
-from models.boosting.predict import *
-# ... (lihat notebook untuk full pipeline)
-"
-```
-
-## Struktur File
-
-```
-models/boosting/
-├── feature_extraction.py   # Semua fitur engineering
-├── train_lightgbm.py       # Training LightGBM (imbalance + balance)
-├── train_xgboost.py        # Training XGBoost (imbalance + balance)
-├── predict.py              # Threshold tuning, prediksi, save output
-├── requirements.txt        # Dependencies
-└── README.md               # Dokumentasi ini
-```
-
-## Output
-
-```
-results/predictions/
-├── lightgbm_imbalance_predictions.csv
-├── xgboost_imbalance_predictions.csv
-├── lightgbm_balance_predictions.csv
-└── xgboost_balance_predictions.csv
-
-results/metrics/
-├── lightgbm_imbalance_metrics.json
-├── xgboost_imbalance_metrics.json
-├── lightgbm_balance_metrics.json
-└── xgboost_balance_metrics.json
-```
-
-## Kendala
 
 - Training pada data imbalance (~3M tokens) membutuhkan waktu ~35 menit per model di Kaggle
 - XGBoost memerlukan GPU (CUDA) untuk training dalam waktu wajar
