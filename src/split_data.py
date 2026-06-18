@@ -1,7 +1,8 @@
 """
-Split dataset menjadi train/validation/test.
+Split dataset menjadi train/validation/test_internal.
 Split berdasarkan document ID (bukan token), untuk fair evaluation.
 """
+# split cuma untuk imbalance data, balance langsung ambil dari drive, itu udah di processed jadi gausa split lagi
 
 import json
 import random
@@ -99,13 +100,13 @@ def save_split(train_data: List[Dict], val_data: List[Dict], test_data: List[Dic
     os.makedirs(output_dir, exist_ok=True)
     
     # Save as JSON
-    with open(f"{output_dir}/train.json", 'w') as f:
+    with open(f"{output_dir}/imbalance/train.json", 'w') as f:
         json.dump(train_data, f, indent=2)
     
-    with open(f"{output_dir}/val.json", 'w') as f:
+    with open(f"{output_dir}/imbalance/val.json", 'w') as f:
         json.dump(val_data, f, indent=2)
     
-    with open(f"{output_dir}/test_internal.json", 'w') as f:
+    with open(f"{output_dir}/imbalance/test_internal.json", 'w') as f: #ini nanti dihapus
         json.dump(test_data, f, indent=2)
     
     print(f"\nData saved to {output_dir}/")
@@ -117,7 +118,7 @@ def save_split(train_data: List[Dict], val_data: List[Dict], test_data: List[Dic
 if __name__ == "__main__":
     # Load raw data
     print("Loading train.json from Kaggle...")
-    with open("train.json", 'r') as f:
+    with open("data/raw/imbalance/train.json", 'r') as f: #ambil dari data/raw/imbalance/train.json
         raw_data = json.load(f)
     
     # Split data

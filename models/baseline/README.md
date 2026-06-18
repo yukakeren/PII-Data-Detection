@@ -1,62 +1,104 @@
 # Baseline Models for PII Detection
 
-This folder contains baseline machine learning models for token-level Personally Identifiable Information (PII) detection.
+Folder ini berisi implementasi dan hasil eksperimen baseline machine learning untuk deteksi **Personally Identifiable Information (PII)** pada level token.
 
-The models used are:
+Model yang digunakan:
 
 - Logistic Regression
 - Linear SVM
 
+Notebook utama yang digunakan untuk eksperimen:
+
+```text
+models/baseline/baseline_notebook.ipynb
+```
+
+Notebook ini membandingkan dua skenario dataset:
+
+- `balance`
+- `imbalance`
+
 ## Method
 
-Baseline models are implemented as token-level classifiers. Each token from the dataset is converted into numerical features and classified into either a PII label or non-PII label.
+Baseline model dibuat sebagai **token-level classifier**. Setiap token pada dokumen diubah menjadi fitur numerik, kemudian diklasifikasikan ke salah satu label PII atau label non-PII (`O`).
 
-The models are trained using processed datasets from the project split:
+Eksperimen dilakukan pada dua skenario dataset:
 
 ```text
 data/processed/
-├── train.json
-├── val.json
-└── test_internal.json
+├── balance/
+│   ├── train.json
+│   ├── val.json
+│   └── test.json
+└── imbalance/
+    ├── train.json
+    ├── val.json
+    └── test.json
 ```
 
-The final evaluation is performed on `test_internal.json`.
+Pada setiap skenario:
+
+- `train.json` digunakan untuk melatih model.
+- `val.json` digunakan untuk validasi dan pengecekan eksperimen.
+- `test.json` digunakan untuk evaluasi akhir skenario tersebut.
+
+Evaluasi dilakukan dengan membandingkan `true_label` dan `pred_label` pada hasil prediksi test set.
 
 ## Preprocessing
 
-The preprocessing stage consists of:
+Tahap preprocessing terdiri dari:
 
-- tokenization (provided by the dataset)
+- tokenization, yang sudah disediakan oleh dataset
 - lowercasing
 - token-level feature extraction
-- context feature extraction (previous and next token)
-- TF-IDF vectorization using character n-grams (2–4)
+- context feature extraction menggunakan token sebelum dan sesudah
+- TF-IDF vectorization menggunakan character n-gram 2 sampai 4
 
-Stopword removal, stemming, and lemmatization are not applied because they may remove useful information required for PII identification.
+Stopword removal, stemming, dan lemmatization tidak digunakan karena task ini adalah PII detection / token classification. Proses tersebut dapat menghilangkan informasi penting seperti nama, email, username, ID number, URL, atau alamat.
 
 ## Feature Engineering
 
-Each token is converted into handcrafted token-level features and TF-IDF representation.
+Setiap token diubah menjadi gabungan fitur manual dan fitur TF-IDF.
 
-The handcrafted features used include:
+### Handcrafted Features
 
+Fitur manual yang digunakan meliputi:
+
+- token lowercase
 - token length
-- character features
-- capitalization pattern
-- digit pattern
-- email pattern
-- URL pattern
+- character shape
+- capitalization and digit flags
+- email and URL pattern
 - prefix and suffix
-- previous token
-- next token
+- previous token context
+- next token context
 
-TF-IDF representation is used to convert token text into numerical features based on character patterns. In this experiment, TF-IDF uses character n-grams so the model can capture useful patterns inside tokens, such as email format, URL pattern, name pattern, and ID number pattern.
+### TF-IDF Features
 
-Context tokens are included because Logistic Regression and Linear SVM do not directly model token sequences like CRF.
+TF-IDF digunakan untuk mengubah teks token menjadi fitur numerik berdasarkan pola karakter.
+
+Konfigurasi TF-IDF:
+
+```python
+TfidfVectorizer(
+    analyzer="char_wb",
+    ngram_range=(2, 4),
+    min_df=2
+)
+```
+
+Character-level TF-IDF membantu model mengenali pola dalam token, misalnya:
+
+- pola email seperti `@`, `gmail`, `.com`
+- pola URL seperti `http`, `www`, `.com`
+- pola ID number yang banyak mengandung angka
+- pola nama atau username
+
+Fitur konteks juga digunakan karena Logistic Regression dan Linear SVM tidak memodelkan urutan token secara langsung seperti CRF.
 
 ## Hyperparameter
 
-Hyperparameters are model settings defined before training. These values control how the model learns from the training data.
+Hyperparameter adalah pengaturan model yang ditentukan sebelum training.
 
 ### Logistic Regression
 
@@ -66,17 +108,19 @@ LogisticRegression(
     max_iter=150,
     solver="saga",
     tol=1e-3,
-    verbose=0
+    verbose=0,
+    random_state=42
 )
 ```
 
-Explanation:
+Penjelasan:
 
-- `class_weight="balanced"` is used to handle class imbalance because non-PII tokens are more frequent than PII tokens.
-- `max_iter=150` sets the maximum number of optimization iterations.
-- `solver="saga"` is used because it supports large-scale sparse features.
-- `tol=1e-3` controls the stopping tolerance. A larger tolerance helps training finish faster.
-- `verbose=0` disables detailed training logs.
+- `class_weight="balanced"` digunakan untuk membantu model memperhatikan kelas PII yang jumlahnya lebih sedikit dibanding label `O`.
+- `max_iter=150` membatasi jumlah iterasi optimasi agar training tetap feasible.
+- `solver="saga"` cocok untuk fitur sparse dan berdimensi besar seperti hasil TF-IDF.
+- `tol=1e-3` mengatur batas toleransi berhenti training.
+- `verbose=0` mematikan log detail selama training.
+- `random_state=42` digunakan agar hasil lebih reproducible.
 
 ### Linear SVM
 
@@ -84,19 +128,27 @@ Explanation:
 LinearSVC(
     class_weight="balanced",
     max_iter=1000,
-    tol=1e-3
+    tol=1e-3,
+    random_state=42
 )
 ```
 
-Explanation:
+Penjelasan:
 
-- `class_weight="balanced"` is used to reduce the effect of class imbalance.
-- `max_iter=1000` sets the maximum number of training iterations.
-- `tol=1e-3` controls the stopping tolerance during optimization.
+- `class_weight="balanced"` digunakan untuk mengurangi dampak class imbalance.
+- `max_iter=1000` membatasi jumlah iterasi training.
+- `tol=1e-3` menentukan batas toleransi konvergensi.
+- `random_state=42` digunakan agar hasil eksperimen lebih konsisten.
 
 ## Run Training
 
-Train the baseline models and generate predictions, metrics, and trained model files:
+Jalankan notebook berikut untuk menjalankan seluruh eksperimen dan menghasilkan model, prediksi, metrics, serta grafik:
+
+```text
+models/baseline/baseline_notebook.ipynb
+```
+
+Script training utama juga tersedia pada:
 
 ```bash
 python models/baseline/train_baseline.py
@@ -104,16 +156,29 @@ python models/baseline/train_baseline.py
 
 ## Outputs
 
-### Predictions
+### Trained Models
 
-Generated prediction files:
+Notebook menghasilkan model berikut:
 
 ```text
-results/predictions/logistic_regression_predictions.csv
-results/predictions/linear_svm_predictions.csv
+models/baseline/logistic_regression_balance_model.joblib
+models/baseline/linear_svm_balance_model.joblib
+models/baseline/logistic_regression_imbalance_model.joblib
+models/baseline/linear_svm_imbalance_model.joblib
 ```
 
-CSV format:
+### Predictions
+
+Output prediksi yang dihasilkan notebook:
+
+```text
+results/predictions/logistic_regression_balance_predictions.csv
+results/predictions/linear_svm_balance_predictions.csv
+results/predictions/logistic_regression_imbalance_predictions.csv
+results/predictions/linear_svm_imbalance_predictions.csv
+```
+
+Format CSV:
 
 ```text
 document_id,token,true_label,pred_label
@@ -121,70 +186,136 @@ document_id,token,true_label,pred_label
 
 ### Metrics
 
-Generated evaluation metrics:
+Output metrics yang dihasilkan notebook:
 
 ```text
-results/metrics/logistic_regression_metrics.json
-results/metrics/linear_svm_metrics.json
+results/metrics/logistic_regression_balance_metrics.json
+results/metrics/linear_svm_balance_metrics.json
+results/metrics/logistic_regression_imbalance_metrics.json
+results/metrics/linear_svm_imbalance_metrics.json
 ```
 
-### Trained Models
+### Plots
 
-Saved trained models:
+Grafik pendukung disimpan pada:
 
 ```text
-models/baseline/logistic_regression_model.joblib
-models/baseline/linear_svm_model.joblib
+models/baseline/plots/dataset_pii_ratio.png
+models/baseline/plots/train_pii_label_distribution.png
+models/baseline/plots/baseline_token_metrics_comparison.png
+models/baseline/plots/baseline_entity_metrics_comparison.png
+models/baseline/plots/baseline_f1_balance_vs_imbalance.png
+models/baseline/plots/actual_vs_predicted_pii.png
+models/baseline/plots/baseline_per_class_f1.png
 ```
+
+## Dataset Statistics
+
+### PII Ratio per Split
+
+![Dataset PII Ratio](plots/dataset_pii_ratio.png)
+
+Grafik ini menunjukkan perbandingan rasio token PII pada skenario balance dan imbalance. Pada train split, dataset balance memiliki rasio token PII lebih tinggi dibanding dataset imbalance.
+
+Berdasarkan hasil notebook:
+
+```text
+PII ratio train balance   : 2.2073%
+PII ratio train imbalance : 0.0551%
+Perbandingan              : 40.07 kali
+```
+
+### Train PII Label Distribution
+
+![Train PII Label Distribution](plots/train_pii_label_distribution.png)
+
+Grafik ini memperlihatkan distribusi label PII pada training set. Label `O` tidak ditampilkan agar distribusi label PII dapat dibaca lebih jelas.
 
 ## Results
 
-### Performance Visualization
+### Token-Level Metrics Comparison
 
-#### Token-Level Performance Comparison
+![Token Metrics Comparison](plots/baseline_token_metrics_comparison.png)
 
-![Token Level Comparison](Figure_1.png)
+Token-level evaluation menghitung benar atau salahnya prediksi pada setiap token. Semakin tinggi precision, recall, dan F1-score, semakin baik model dalam mendeteksi token PII.
 
-#### Entity-Level Performance Comparison
+### Entity-Level Metrics Comparison
 
-![Entity Level Comparison](Figure_2.png)
+![Entity Metrics Comparison](plots/baseline_entity_metrics_comparison.png)
 
-### Logistic Regression
+Entity-level evaluation lebih ketat karena menilai apakah entitas PII lengkap berhasil dikenali. Misalnya nama lengkap yang terdiri dari beberapa token harus terdeteksi sebagai satu entity yang benar.
 
-```text
-Token-level Precision : 0.3909
-Token-level Recall    : 0.9230
-Token-level F1-score  : 0.5492
+### F1 Balance vs Imbalance
 
-Entity-level Precision: 0.2177
-Entity-level Recall   : 0.7730
-Entity-level F1-score : 0.3398
-```
+![F1 Balance vs Imbalance](plots/baseline_f1_balance_vs_imbalance.png)
 
-Logistic Regression achieved high recall but lower precision. This means the model can detect many PII tokens, but still produces more false positives compared to Linear SVM.
+Grafik ini memperlihatkan perbandingan token F1 antara skenario balance dan imbalance untuk Logistic Regression dan Linear SVM.
 
-### Linear SVM
+### Actual vs Predicted PII
 
-```text
-Token-level Precision : 0.8172
-Token-level Recall    : 0.8708
-Token-level F1-score  : 0.8431
+![Actual vs Predicted PII](plots/actual_vs_predicted_pii.png)
 
-Entity-level Precision: 0.5660
-Entity-level Recall   : 0.7397
-Entity-level F1-score : 0.6413
-```
+Grafik ini membandingkan jumlah token PII sebenarnya dengan jumlah token yang diprediksi sebagai PII. Grafik ini membantu melihat apakah model terlalu agresif menandai token sebagai PII.
 
-Linear SVM achieved better and more balanced performance compared to Logistic Regression.
+### Per-Class F1
+
+![Per-Class F1](plots/baseline_per_class_f1.png)
+
+Grafik ini menunjukkan performa F1 untuk setiap label PII. Analisis per kelas penting karena micro F1 dapat didominasi oleh label yang jumlahnya lebih banyak.
+
+## Experiment Results
+
+### Balance Scenario
+
+| Model | Token Precision | Token Recall | Token F1 | Entity Precision | Entity Recall | Entity F1 | Predicted PII | False Positive Non-PII | Missed PII |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.0009 | 0.9605 | 0.0018 | 0.0002 | 0.3008 | 0.0004 | 704,546 | 703,888 | 0 |
+| Linear SVM | 0.2224 | 0.6626 | 0.3331 | 0.1089 | 0.4881 | 0.1781 | 1,960 | 1,492 | 190 |
+
+Pada skenario balance, Linear SVM menjadi model terbaik dengan token F1 sebesar `0.3331` dan entity F1 sebesar `0.1781`.
+
+### Imbalance Scenario
+
+| Model | Token Precision | Token Recall | Token F1 | Entity Precision | Entity Recall | Entity F1 | Predicted PII | False Positive Non-PII | Missed PII |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.0107 | 0.9894 | 0.0212 | 0.0063 | 0.8311 | 0.0125 | 60,621 | 59,964 | 1 |
+| Linear SVM | 0.8877 | 0.8891 | 0.8884 | 0.7524 | 0.8338 | 0.7910 | 659 | 73 | 72 |
+
+Pada skenario imbalance, Linear SVM juga menjadi model terbaik dengan token F1 sebesar `0.8884` dan entity F1 sebesar `0.7910`.
 
 ## Short Analysis
 
-Logistic Regression has a strong recall score, meaning it can detect many PII tokens. However, its precision is lower, indicating that it still predicts some non-PII tokens as PII.
+Berdasarkan hasil notebook, Linear SVM menjadi model terbaik pada kedua skenario. Model ini lebih stabil dibanding Logistic Regression karena menghasilkan precision, recall, dan F1-score yang lebih seimbang.
 
-Linear SVM performs better as a baseline model. It produces a more balanced result between precision and recall, with a token-level F1-score of 0.8431 and an entity-level F1-score of 0.6413.
+Logistic Regression memiliki kecenderungan terlalu agresif dalam menandai token sebagai PII. Hal ini terlihat dari jumlah `predicted_pii` dan false positive yang sangat tinggi, terutama pada skenario balance.
 
-The updated dataset improves baseline performance significantly compared to the previous dataset, especially for Logistic Regression.
+Pada skenario balance, Linear SVM dipilih sebagai baseline akhir karena notebook menetapkan pemilihan akhir hanya berdasarkan hasil dataset balance. Model terpilih adalah:
+
+```text
+Linear SVM
+Token Precision : 0.2224
+Token Recall    : 0.6626
+Token F1        : 0.3331
+Entity F1       : 0.1781
+```
+
+Hasil skenario imbalance tidak digunakan sebagai keputusan final, tetapi tetap ditampilkan sebagai pembanding untuk memahami pengaruh distribusi dataset terhadap performa model.
+
+## Data Integrity Note
+
+Notebook mendeteksi beberapa peringatan pada pemeriksaan split, termasuk document ID overlap dan duplicate document ID pada skenario tertentu. Oleh karena itu, hasil ini sebaiknya dibaca sebagai hasil eksperimen notebook yang sudah dijalankan, tetapi split dataset tetap perlu diverifikasi kembali apabila hasil akan digunakan sebagai evaluasi final resmi.
+
+Catatan dari notebook:
+
+- Balance train memiliki duplicate document ID `-1`.
+- Terdapat overlap antara validation dan test pada kedua skenario.
+- Pada skenario imbalance, terdapat overlap antara train dan test.
+- Test set balance dan imbalance tidak identik.
+
+Jika evaluasi final harus benar-benar fair, split perlu diperbaiki agar tidak ada document ID yang muncul di lebih dari satu split.
 
 ## Conclusion
 
-Linear SVM is the stronger baseline model in this experiment. It provides a better balance between precision and recall and can be used as the main baseline comparison for CRF, boosting models, ensemble models, and deep learning models.
+Linear SVM merupakan baseline model terbaik pada eksperimen notebook ini. Model tersebut unggul pada skenario balance maupun imbalance. Untuk keputusan baseline akhir berdasarkan dataset balance, Linear SVM dipilih karena memperoleh token F1 tertinggi dibanding Logistic Regression.
+
+Namun, karena notebook juga mendeteksi warning pada integritas split, hasil metrik perlu diinterpretasikan dengan hati-hati. Untuk evaluasi final yang lebih kuat, dataset split sebaiknya diverifikasi ulang agar train, validation, dan test benar-benar tidak saling tumpang tindih.

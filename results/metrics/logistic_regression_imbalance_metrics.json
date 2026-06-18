@@ -1,118 +1,295 @@
 {
+  "model": "logistic_regression_imbalance",
+  "scenario": "imbalance",
+  "evaluation_file": "data\\processed\\imbalance\\test.json",
+  "total_tokens": 1260090,
   "token_level": {
-    "precision": 0.0128,
-    "recall": 0.9785,
-    "f1": 0.0253,
-    "total_tp": 409,
-    "total_fp": 31522,
-    "total_fn": 9,
+    "precision": 0.010739,
+    "recall": 0.989362,
+    "f1": 0.021247,
+    "total_tp": 651,
+    "total_fp": 59970,
+    "total_fn": 7,
     "per_class": {
       "B-EMAIL": {
-        "precision": 0.2105,
+        "precision": 0.108108,
         "recall": 1.0,
-        "f1": 0.3478,
-        "tp": 4,
-        "fp": 15,
+        "f1": 0.195122,
+        "tp": 8,
+        "fp": 66,
         "fn": 0
       },
       "B-ID_NUM": {
-        "precision": 0.0047,
-        "recall": 0.9375,
-        "f1": 0.0093,
-        "tp": 15,
-        "fp": 3210,
-        "fn": 1
+        "precision": 0.004145,
+        "recall": 1.0,
+        "f1": 0.008255,
+        "tp": 25,
+        "fp": 6007,
+        "fn": 0
       },
       "B-NAME_STUDENT": {
-        "precision": 0.0145,
-        "recall": 0.9763,
-        "f1": 0.0286,
-        "tp": 206,
-        "fp": 14005,
-        "fn": 5
+        "precision": 0.011547,
+        "recall": 0.9875,
+        "f1": 0.022827,
+        "tp": 316,
+        "fp": 27051,
+        "fn": 4
       },
       "B-PHONE_NUM": {
         "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
+        "recall": 0.0,
+        "f1": 0.0,
         "tp": 0,
-        "fp": 1884,
+        "fp": 4533,
         "fn": 0
       },
       "B-STREET_ADDRESS": {
         "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
+        "recall": 0.0,
+        "f1": 0.0,
         "tp": 0,
-        "fp": 68,
+        "fp": 204,
         "fn": 0
       },
       "B-URL_PERSONAL": {
-        "precision": 0.033,
-        "recall": 0.9167,
-        "f1": 0.0638,
-        "tp": 11,
-        "fp": 322,
-        "fn": 1
+        "precision": 0.078616,
+        "recall": 1.0,
+        "f1": 0.145773,
+        "tp": 25,
+        "fp": 293,
+        "fn": 0
       },
       "B-USERNAME": {
         "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
+        "recall": 0.0,
+        "f1": 0.0,
         "tp": 0,
-        "fp": 111,
-        "fn": 0
+        "fp": 648,
+        "fn": 1
       },
       "I-ID_NUM": {
-        "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
-        "tp": 0,
-        "fp": 329,
+        "precision": 0.009615,
+        "recall": 1.0,
+        "f1": 0.019048,
+        "tp": 1,
+        "fp": 103,
         "fn": 0
       },
       "I-NAME_STUDENT": {
-        "precision": 0.0238,
-        "recall": 0.9943,
-        "f1": 0.0465,
-        "tp": 173,
-        "fp": 7087,
-        "fn": 1
+        "precision": 0.021791,
+        "recall": 0.992806,
+        "f1": 0.042645,
+        "tp": 276,
+        "fp": 12390,
+        "fn": 2
       },
       "I-PHONE_NUM": {
         "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
+        "recall": 0.0,
+        "f1": 0.0,
         "tp": 0,
-        "fp": 3466,
+        "fp": 6316,
         "fn": 0
       },
       "I-STREET_ADDRESS": {
         "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
-        "tp": 0,
-        "fp": 1025,
-        "fn": 0
-      },
-      "I-URL_PERSONAL": {
-        "precision": 0,
         "recall": 0.0,
-        "f1": 0,
+        "f1": 0.0,
         "tp": 0,
-        "fp": 0,
-        "fn": 1
+        "fp": 2359,
+        "fn": 0
       }
     }
   },
   "entity_level": {
-    "precision": 0.0073,
-    "recall": 0.7942,
-    "f1": 0.0146,
-    "total_tp": 193,
-    "total_fp": 26090,
-    "total_fn": 50
+    "precision": 0.006285,
+    "recall": 0.831135,
+    "f1": 0.012476,
+    "total_tp": 315,
+    "total_fp": 49803,
+    "total_fn": 64
   },
-  "model": "logistic_regression_imbalance",
-  "total_tokens": 764041
+  "prediction_analysis": {
+    "actual_pii_tokens": 658,
+    "predicted_pii_tokens": 60621,
+    "correct_pii_labels": 651,
+    "false_positive_non_pii": 59964,
+    "missed_pii": 1,
+    "wrong_pii_label": 6,
+    "predicted_label_distribution": {
+      "B-NAME_STUDENT": 27367,
+      "I-NAME_STUDENT": 12666,
+      "B-ID_NUM": 6032,
+      "I-STREET_ADDRESS": 2359,
+      "I-PHONE_NUM": 6316,
+      "B-PHONE_NUM": 4533,
+      "B-USERNAME": 648,
+      "B-URL_PERSONAL": 318,
+      "B-STREET_ADDRESS": 204,
+      "I-ID_NUM": 104,
+      "B-EMAIL": 74
+    },
+    "examples": {
+      "false_positive": [
+        {
+          "document_id": 16,
+          "token_index": 7,
+          "token": "Challenge",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 16,
+          "token": "Regional",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 17,
+          "token": "Controller",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 26,
+          "token": "Country",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 27,
+          "token": "CFO",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 55,
+          "token": "4",
+          "true_label": "O",
+          "pred_label": "B-ID_NUM"
+        },
+        {
+          "document_id": 16,
+          "token_index": 63,
+          "token": "When",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 64,
+          "token": "I",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 78,
+          "token": "Regional",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 79,
+          "token": "Controller",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 80,
+          "token": ",",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 86,
+          "token": "Country",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 107,
+          "token": "4",
+          "true_label": "O",
+          "pred_label": "B-ID_NUM"
+        },
+        {
+          "document_id": 16,
+          "token_index": 169,
+          "token": "Given",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 16,
+          "token_index": 174,
+          "token": "Country",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        }
+      ],
+      "false_negative": [
+        {
+          "document_id": 5716,
+          "token_index": 1,
+          "token": "meyermichelle",
+          "true_label": "B-USERNAME",
+          "pred_label": "O"
+        }
+      ],
+      "wrong_pii_label": [
+        {
+          "document_id": 3380,
+          "token_index": 2,
+          "token": "Ofelia",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 3380,
+          "token_index": 538,
+          "token": "Ofelia",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 7676,
+          "token_index": 29,
+          "token": "Ahmed",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 8340,
+          "token_index": 6,
+          "token": "El",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 10196,
+          "token_index": 8,
+          "token": "Satish",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 11004,
+          "token_index": 1,
+          "token": "Boonstra",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "B-NAME_STUDENT"
+        }
+      ]
+    }
+  }
 }

@@ -1,0 +1,456 @@
+{
+  "model": "linear_svm_balance",
+  "scenario": "balance",
+  "evaluation_file": "data\\processed\\balance\\test.json",
+  "total_tokens": 1260090,
+  "token_level": {
+    "precision": 0.222449,
+    "recall": 0.662614,
+    "f1": 0.333079,
+    "total_tp": 436,
+    "total_fp": 1524,
+    "total_fn": 222,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 0.363636,
+        "recall": 1.0,
+        "f1": 0.533333,
+        "tp": 8,
+        "fp": 14,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 0.326087,
+        "recall": 0.6,
+        "f1": 0.422535,
+        "tp": 15,
+        "fp": 31,
+        "fn": 10
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.259043,
+        "recall": 0.69375,
+        "f1": 0.37723,
+        "tp": 222,
+        "fp": 635,
+        "fn": 98
+      },
+      "B-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 17,
+        "fn": 0
+      },
+      "B-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 17,
+        "fn": 0
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.378788,
+        "recall": 1.0,
+        "f1": 0.549451,
+        "tp": 25,
+        "fp": 41,
+        "fn": 0
+      },
+      "B-USERNAME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 63,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 55,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.448649,
+        "recall": 0.597122,
+        "f1": 0.512346,
+        "tp": 166,
+        "fp": 204,
+        "fn": 112
+      },
+      "I-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 13,
+        "fn": 0
+      },
+      "I-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 434,
+        "fn": 0
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.108888,
+    "recall": 0.488127,
+    "f1": 0.178056,
+    "total_tp": 185,
+    "total_fp": 1514,
+    "total_fn": 194
+  },
+  "prediction_analysis": {
+    "actual_pii_tokens": 658,
+    "predicted_pii_tokens": 1960,
+    "correct_pii_labels": 436,
+    "false_positive_non_pii": 1492,
+    "missed_pii": 190,
+    "wrong_pii_label": 32,
+    "predicted_label_distribution": {
+      "B-NAME_STUDENT": 857,
+      "I-NAME_STUDENT": 370,
+      "I-STREET_ADDRESS": 434,
+      "B-URL_PERSONAL": 66,
+      "B-USERNAME": 63,
+      "B-PHONE_NUM": 17,
+      "B-STREET_ADDRESS": 17,
+      "B-ID_NUM": 46,
+      "I-ID_NUM": 55,
+      "B-EMAIL": 22,
+      "I-PHONE_NUM": 13
+    },
+    "examples": {
+      "false_positive": [
+        {
+          "document_id": 16,
+          "token_index": 297,
+          "token": ",",
+          "true_label": "O",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 20,
+          "token_index": 8,
+          "token": "Gitam",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 56,
+          "token_index": 11,
+          "token": " ",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 104,
+          "token_index": 7,
+          "token": "Dr",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 136,
+          "token_index": 0,
+          "token": "Dear",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 136,
+          "token_index": 32,
+          "token": "My",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 136,
+          "token_index": 681,
+          "token": "https://www.coursera.org/learn/uva-darden-design-thinking-innovation/lecture/lsFRa/",
+          "true_label": "O",
+          "pred_label": "B-URL_PERSONAL"
+        },
+        {
+          "document_id": 308,
+          "token_index": 34,
+          "token": "Norwegian",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1601,
+          "token": "•",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1621,
+          "token": "•",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1646,
+          "token": "•",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1664,
+          "token": "•",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1684,
+          "token": "•",
+          "true_label": "O",
+          "pred_label": "B-NAME_STUDENT"
+        },
+        {
+          "document_id": 356,
+          "token_index": 352,
+          "token": "-",
+          "true_label": "O",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 472,
+          "token_index": 68,
+          "token": "descriptions",
+          "true_label": "O",
+          "pred_label": "B-USERNAME"
+        }
+      ],
+      "false_negative": [
+        {
+          "document_id": 56,
+          "token_index": 13,
+          "token": "Born",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 112,
+          "token_index": 6,
+          "token": "Ferreira",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 136,
+          "token_index": 30,
+          "token": "Al",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 204,
+          "token_index": 4,
+          "token": "Deiby",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 288,
+          "token_index": 1,
+          "token": "Santos",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1,
+          "token": "Dias",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 308,
+          "token_index": 592,
+          "token": "Dias",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1207,
+          "token": "Dias",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 308,
+          "token_index": 1503,
+          "token": "Dias",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 324,
+          "token_index": 13,
+          "token": "Zia",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 760,
+          "token_index": 9,
+          "token": "Vazquez",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 1472,
+          "token_index": 827,
+          "token": "Afridi",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 1824,
+          "token_index": 829,
+          "token": "Seif",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 2732,
+          "token_index": 10,
+          "token": "Sunny",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "O"
+        },
+        {
+          "document_id": 2828,
+          "token_index": 5,
+          "token": "Gray",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "O"
+        }
+      ],
+      "wrong_pii_label": [
+        {
+          "document_id": 3652,
+          "token_index": 2,
+          "token": "Bekim",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 3664,
+          "token_index": 11,
+          "token": "Villa",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 3736,
+          "token_index": 2,
+          "token": "Pandey",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 4004,
+          "token_index": 1,
+          "token": "Duffy",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 4004,
+          "token_index": 480,
+          "token": "Duffy",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 4336,
+          "token_index": 1,
+          "token": "Kl",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 5484,
+          "token_index": 700,
+          "token": "Karla",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 5716,
+          "token_index": 1,
+          "token": "meyermichelle",
+          "true_label": "B-USERNAME",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 5796,
+          "token_index": 24,
+          "token": "696135165639",
+          "true_label": "B-ID_NUM",
+          "pred_label": "I-ID_NUM"
+        },
+        {
+          "document_id": 7156,
+          "token_index": 40,
+          "token": "789323889085",
+          "true_label": "B-ID_NUM",
+          "pred_label": "B-EMAIL"
+        },
+        {
+          "document_id": 7256,
+          "token_index": 6,
+          "token": "Brown",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 8364,
+          "token_index": 1,
+          "token": "Zarei",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 8480,
+          "token_index": 16,
+          "token": "Mohamed",
+          "true_label": "B-NAME_STUDENT",
+          "pred_label": "I-NAME_STUDENT"
+        },
+        {
+          "document_id": 8612,
+          "token_index": 7,
+          "token": "Sofia",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        },
+        {
+          "document_id": 9260,
+          "token_index": 4,
+          "token": "Leon",
+          "true_label": "I-NAME_STUDENT",
+          "pred_label": "I-STREET_ADDRESS"
+        }
+      ]
+    }
+  }
+}

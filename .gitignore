@@ -48,6 +48,19 @@ venv.bak/
 data/raw/**
 !data/raw/.gitkeep
 
+# Dataset files
+data/raw/**
+data/processed/**
+
+# Keep folder structure
+!data/raw/
+!data/raw/**/
+!data/raw/**/.gitkeep
+
+!data/processed/
+!data/processed/**/
+!data/processed/**/.gitkeep
+
 # Models (large files)
 models/**/*.pkl
 models/**/*.pt
