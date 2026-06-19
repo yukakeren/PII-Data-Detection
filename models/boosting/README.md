@@ -294,9 +294,3 @@ Berdasarkan hasil eksperimen, **LightGBM pada skenario imbalance** menjadi model
 **LightGBM Imbalance** adalah model boosting terbaik pada eksperimen ini dengan entity F1 `0.6554` dan token F1 `0.7779`. Model ini dipilih sebagai model boosting final karena menghasilkan precision, recall, dan F1-score yang paling seimbang.
 
 Skenario imbalance terbukti lebih efektif dibanding skenario balance, menunjukkan bahwa pendekatan `sample_weight` pada data distribusi asli lebih cocok untuk task PII detection dibandingkan data yang di-balance secara offline.
-
-Untuk meningkatkan performa lebih lanjut, dapat dipertimbangkan:
-
-- Penambahan fitur kontekstual yang lebih kaya (misalnya embedding token dari pre-trained model)
-- Hyperparameter tuning lebih lanjut khususnya untuk kelas yang sulit terdeteksi
-- Ensemble antara LightGBM Imbalance dan XGBoost Imbalance
