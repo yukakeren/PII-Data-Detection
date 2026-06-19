@@ -1,13 +1,3 @@
-"""
-Training script untuk XGBoost model pada PII Detection.
-Mendukung dua mode:
-  - imbalance: data dari data/processed/imbalance/ (distribusi asli)
-  - balance:   data dari data/processed/balance/   (sudah di-balance)
-
-Note: XGBoost memerlukan label contiguous 0..N-1, sehingga diperlukan
-label remapping sebelum training.
-"""
-
 import numpy as np
 from collections import Counter
 from xgboost import XGBClassifier
@@ -20,17 +10,6 @@ from models.boosting.feature_extraction import (
 
 
 def create_label_remap(y_train):
-    """
-    Buat remapping label agar contiguous 0..N-1 (requirement XGBoost).
-
-    Args:
-        y_train: encoded integer labels
-
-    Returns:
-        remap: Dict[old_label -> new_label]
-        reverse_remap: Dict[new_label -> old_label]
-        y_remapped: remapped labels
-    """
     unique_labels = sorted(np.unique(y_train))
     remap = {old: new for new, old in enumerate(unique_labels)}
     reverse_remap = {new: old for old, new in remap.items()}
@@ -42,28 +21,6 @@ def create_label_remap(y_train):
 
 def train_xgboost_imbalance(X_train, y_train, y_train_str, X_val, y_val, le,
                              remap, reverse_remap, y_train_remapped, sample_weights):
-    """
-    Train XGBoost dengan data imbalance dari data/processed/imbalance/.
-
-    Menggunakan GPU acceleration (device="cuda") dan tree_method="hist"
-    untuk training lebih cepat.
-
-    Args:
-        X_train: sparse feature matrix training (dari imbalance/train.json)
-        y_train: encoded integer labels training (original)
-        y_train_str: string labels training
-        X_val: sparse feature matrix validation (dari imbalance/val.json)
-        y_val: encoded integer labels validation
-        le: LabelEncoder instance
-        remap: label remapping dict
-        reverse_remap: reverse label remapping dict
-        y_train_remapped: remapped labels untuk XGBoost
-        sample_weights: per-sample weights
-
-    Returns:
-        model: trained XGBClassifier
-        val_f1: validation F1 score (PII only)
-    """
     print("\n=== Training XGBoost (Imbalance) ===")
     print(f"  Data: data/processed/imbalance/")
     print(f"  Train samples: {X_train.shape[0]}, Val samples: {X_val.shape[0]}")
@@ -102,29 +59,6 @@ def train_xgboost_imbalance(X_train, y_train, y_train_str, X_val, y_val, le,
 
 def train_xgboost_balance(X_train, y_train, y_train_str,
                            X_val, y_val, le, o_index):
-    """
-    Train XGBoost dengan data balance dari data/processed/balance/.
-
-    Data sudah di-balance secara offline (pre-split), sehingga tidak perlu
-    melakukan undersample/oversample lagi di dalam kode.
-    Membuat remapping khusus untuk balanced data dan menggunakan
-    min_child_weight=3 (lebih rendah dari imbalance).
-
-    Args:
-        X_train: sparse feature matrix training (dari balance/train.json)
-        y_train: encoded integer labels training
-        y_train_str: string labels training
-        X_val: sparse feature matrix validation (dari balance/val.json)
-        y_val: encoded integer labels validation
-        le: LabelEncoder instance
-        o_index: index label "O" dalam LabelEncoder
-
-    Returns:
-        model: trained XGBClassifier
-        val_f1: validation F1 score (PII only)
-        remap_bal: remapping dict untuk balanced data
-        reverse_remap_bal: reverse remapping dict
-    """
     print("\n=== Training XGBoost (Balance) ===")
     print(f"  Data: data/processed/balance/")
     print(f"  Train samples: {X_train.shape[0]}, Val samples: {X_val.shape[0]}")
