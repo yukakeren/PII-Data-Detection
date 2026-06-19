@@ -1,12 +1,3 @@
-"""
-Prediction & evaluation script untuk Boosting Models.
-Mencakup threshold tuning, prediksi, save CSV, dan save metrics JSON.
-
-Mendukung pipeline dengan dua set test data terpisah:
-  - Imbalance: dari data/processed/imbalance/test.json
-  - Balance:   dari data/processed/balance/test.json
-"""
-
 import os
 import csv
 import json
@@ -20,23 +11,6 @@ from models.boosting.feature_extraction import quick_f1_pii
 # ============================================================
 
 def predict_with_threshold(model, X, le, o_idx_remapped, threshold, reverse_remap):
-    """
-    Prediksi dengan threshold pada probabilitas non-O.
-
-    Jika model memprediksi O tapi probabilitas class non-O terbaik >= threshold,
-    maka override prediksi ke class non-O tersebut.
-
-    Args:
-        model: trained model (LightGBM atau XGBoost)
-        X: feature matrix
-        le: LabelEncoder instance
-        o_idx_remapped: index label O dalam remapped space
-        threshold: probability threshold untuk override O
-        reverse_remap: Dict[remapped_label -> original_label]
-
-    Returns:
-        List[str]: predicted label strings
-    """
     proba = model.predict_proba(X)
     pred_idx = np.argmax(proba, axis=1)
 
@@ -55,20 +29,6 @@ def predict_with_threshold(model, X, le, o_idx_remapped, threshold, reverse_rema
 
 
 def predict_with_threshold_xgb(model, X, le, o_idx_original, threshold, reverse_remap):
-    """
-    Prediksi dengan threshold khusus XGBoost (handle remapped labels).
-
-    Args:
-        model: trained XGBClassifier
-        X: feature matrix
-        le: LabelEncoder instance
-        o_idx_original: index label O dalam original LabelEncoder space
-        threshold: probability threshold
-        reverse_remap: Dict[remapped_label -> original_label]
-
-    Returns:
-        List[str]: predicted label strings
-    """
     proba = model.predict_proba(X)
     pred_idx_remapped = np.argmax(proba, axis=1)
 
@@ -95,23 +55,6 @@ def predict_with_threshold_xgb(model, X, le, o_idx_original, threshold, reverse_
 
 def tune_threshold(model, X_val, y_val_str, le, o_idx_remapped, reverse_remap,
                    thresholds=None, predict_fn=None):
-    """
-    Tune threshold optimal pada validation set.
-
-    Args:
-        model: trained model
-        X_val: validation feature matrix
-        y_val_str: validation string labels
-        le: LabelEncoder instance
-        o_idx_remapped: index label O (remapped atau original tergantung model)
-        reverse_remap: label reverse mapping
-        thresholds: list of thresholds to try
-        predict_fn: prediction function to use
-
-    Returns:
-        best_threshold: optimal threshold
-        best_f1: best F1 score
-    """
     if thresholds is None:
         thresholds = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50]
 
@@ -135,16 +78,6 @@ def tune_threshold(model, X_val, y_val_str, le, o_idx_remapped, reverse_remap,
 # ============================================================
 
 def save_predictions_csv(meta, pred_labels_str, output_path):
-    """
-    Save predictions ke CSV format yang sesuai ketentuan project.
-
-    Format: document_id,token,true_label,pred_label
-
-    Args:
-        meta: list of (doc_id, token, true_label) tuples
-        pred_labels_str: list of predicted label strings
-        output_path: path file CSV output
-    """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
@@ -162,15 +95,6 @@ def save_predictions_csv(meta, pred_labels_str, output_path):
 
 
 def save_metrics_json(csv_path, model_name, output_path):
-    """
-    Evaluate predictions dari CSV dan save metrics ke JSON.
-    Menggunakan src/evaluate.py dari project.
-
-    Args:
-        csv_path: path ke CSV predictions
-        model_name: nama model untuk identifikasi
-        output_path: path file JSON output
-    """
     from src.evaluate import evaluate_from_csv, print_metrics, save_metrics
 
     metrics = evaluate_from_csv(csv_path, model_name)
@@ -193,36 +117,6 @@ def run_prediction_pipeline(
     le, o_index,
     remap_imb, reverse_remap_imb, remap_bal, reverse_remap_bal,
 ):
-    """
-    Jalankan pipeline prediksi lengkap untuk semua 4 varian model.
-
-    Setiap model menggunakan test data dari folder yang sesuai:
-      - Imbalance models → data/processed/imbalance/test.json
-      - Balance models   → data/processed/balance/test.json
-
-    Pipeline per model:
-    1. Tune threshold di validation set (dari folder yang sesuai)
-    2. Predict di test set (dari folder yang sesuai)
-    3. Save CSV predictions
-    4. Evaluate dan save metrics JSON
-
-    Args:
-        models_dict: dict dengan keys 'lgb_imb', 'xgb_imb', 'lgb_bal', 'xgb_bal'
-        X_test_imb: test feature matrix (dari imbalance/test.json)
-        X_val_imb: validation feature matrix (dari imbalance/val.json)
-        y_val_imb_str: validation string labels (imbalance)
-        meta_test_imb: test metadata imbalance (doc_id, token, true_label)
-        X_test_bal: test feature matrix (dari balance/test.json)
-        X_val_bal: validation feature matrix (dari balance/val.json)
-        y_val_bal_str: validation string labels (balance)
-        meta_test_bal: test metadata balance (doc_id, token, true_label)
-        le: LabelEncoder instance
-        o_index: index label O dalam original LabelEncoder
-        remap_imb: imbalance label remap
-        reverse_remap_imb: imbalance reverse remap
-        remap_bal: balance label remap
-        reverse_remap_bal: balance reverse remap
-    """
     o_idx_remapped_imb = remap_imb[o_index]
     o_idx_remapped_bal = remap_bal[o_index]
 
