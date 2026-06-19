@@ -1,16 +1,3 @@
-"""
-Feature extraction untuk Boosting Models (XGBoost & LightGBM).
-Mengekstrak fitur token-level dari data PII untuk token classification.
-
-Features:
-- Character-level features (length, case, digit, special chars)
-- Regex pattern matching (email, URL, phone, ID, zip, username, street)
-- Keyword distance features (jarak ke keyword terdekat dalam window)
-- Colon pattern features
-- Context features (fitur dari token tetangga)
-- Character n-gram features via HashingVectorizer
-"""
-
 import re
 import numpy as np
 from collections import defaultdict
@@ -49,12 +36,6 @@ KEYWORD_GROUPS = {
 
 
 def keyword_distance_features(tokens, idx, window=8):
-    """
-    Hitung fitur jarak ke keyword group terdekat dalam window.
-    
-    Returns:
-        List[float]: satu nilai per keyword group (0.0 = jauh, 1.0 = dekat)
-    """
     feats = []
     for group_name, kws in KEYWORD_GROUPS.items():
         min_dist = window + 1
@@ -70,12 +51,6 @@ def keyword_distance_features(tokens, idx, window=8):
 
 
 def colon_pattern_feature(tokens, idx):
-    """
-    Cek apakah token sebelumnya diakhiri colon (pola "Label: Value").
-    
-    Returns:
-        List[float]: [has_colon_before, has_colon_2back]
-    """
     if idx == 0:
         return [0.0, 0.0]
     prev_tok = tokens[idx - 1]
@@ -85,7 +60,6 @@ def colon_pattern_feature(tokens, idx):
 
 
 def _char_feats(t):
-    """Extract character-level features dari satu token."""
     if not t or t == "<PAD>":
         return [0] * 12
     return [
@@ -105,26 +79,6 @@ def _char_feats(t):
 
 
 def token_features(tokens, idx):
-    """
-    Extract semua fitur untuk satu token pada posisi idx.
-    
-    Features:
-    - 12 char features token utama
-    - 12 regex pattern features
-    - 2 prefix/suffix hash features
-    - 6 * 12 = 72 context char features (window -3..+3)
-    - 6 keyword distance features
-    - 2 colon pattern features
-    
-    Total: 106 hand-crafted features
-    
-    Args:
-        tokens: List of tokens dalam satu dokumen
-        idx: Index token yang akan diekstrak fiturnya
-        
-    Returns:
-        List[float]: vektor fitur
-    """
     token = tokens[idx]
     n = len(tokens)
 
@@ -172,23 +126,6 @@ def token_features(tokens, idx):
 
 
 def build_feature_matrix(data, vectorizer=None, fit_vectorizer=False):
-    """
-    Build feature matrix dari seluruh dataset.
-    
-    Menggabungkan hand-crafted features dengan character n-gram features
-    dari HashingVectorizer.
-    
-    Args:
-        data: List of documents (dict dengan keys: tokens, labels, document)
-        vectorizer: HashingVectorizer yang sudah di-fit (None jika fit_vectorizer=True)
-        fit_vectorizer: Jika True, buat vectorizer baru
-        
-    Returns:
-        X: sparse feature matrix
-        all_labels: list of label strings
-        meta: list of (doc_id, token, true_label) tuples
-        vectorizer: HashingVectorizer instance
-    """
     all_hand, all_tokens, all_labels, meta = [], [], [], []
 
     for doc in data:
@@ -217,18 +154,6 @@ def build_feature_matrix(data, vectorizer=None, fit_vectorizer=False):
 
 
 def encode_labels(labels, le=None, fit=False):
-    """
-    Encode string labels ke integer menggunakan LabelEncoder.
-    
-    Args:
-        labels: List of label strings
-        le: LabelEncoder instance (None jika fit=True)
-        fit: Jika True, fit encoder baru
-        
-    Returns:
-        encoded: array of integer labels
-        le: LabelEncoder instance
-    """
     if fit:
         le = LabelEncoder()
         le.fit(labels)
@@ -236,16 +161,6 @@ def encode_labels(labels, le=None, fit=False):
 
 
 def compute_class_weights(y, power=0.5):
-    """
-    Hitung class weights berdasarkan inverse frequency.
-    
-    Args:
-        y: array of integer labels
-        power: eksponen untuk smoothing (0.5 = sqrt inverse frequency)
-        
-    Returns:
-        Dict[int, float]: mapping class_id -> weight
-    """
     counts = defaultdict(int)
     for label in y:
         counts[label] += 1
@@ -255,31 +170,10 @@ def compute_class_weights(y, power=0.5):
 
 
 def get_sample_weights(y, class_weights):
-    """
-    Konversi class weights ke per-sample weights.
-    
-    Args:
-        y: array of integer labels
-        class_weights: Dict[int, float] dari compute_class_weights()
-        
-    Returns:
-        np.array of sample weights
-    """
     return np.array([class_weights[label] for label in y], dtype=np.float32)
 
 
 def quick_f1_pii(true_labels, pred_labels):
-    """
-    Hitung quick macro F1 score untuk PII labels saja (exclude O).
-    Digunakan untuk monitoring cepat saat training/tuning.
-    
-    Args:
-        true_labels: List of true label strings
-        pred_labels: List of predicted label strings
-        
-    Returns:
-        float: macro F1 score untuk PII classes
-    """
     tp, fp, fn = defaultdict(int), defaultdict(int), defaultdict(int)
     for t, p in zip(true_labels, pred_labels):
         if t != "O":
