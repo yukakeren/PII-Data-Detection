@@ -1,6 +1,8 @@
 """
 Training script untuk LightGBM model pada PII Detection.
-Mendukung dua mode: imbalance (data penuh) dan balance (undersampled O + oversampled PII).
+Mendukung dua mode:
+  - imbalance: data dari data/processed/imbalance/ (distribusi asli)
+  - balance:   data dari data/processed/balance/   (sudah di-balance)
 """
 
 import numpy as np
@@ -16,24 +18,27 @@ from models.boosting.feature_extraction import (
 
 def train_lightgbm_imbalance(X_train, y_train, y_train_str, X_val, y_val, le):
     """
-    Train LightGBM dengan data imbalance (full dataset).
-    
+    Train LightGBM dengan data imbalance dari data/processed/imbalance/.
+
     Menggunakan sample weights untuk menangani class imbalance
     tanpa mengubah distribusi data.
-    
+
     Args:
-        X_train: sparse feature matrix training
+        X_train: sparse feature matrix training (dari imbalance/train.json)
         y_train: encoded integer labels training
         y_train_str: string labels training (untuk compute weights)
-        X_val: sparse feature matrix validation
+        X_val: sparse feature matrix validation (dari imbalance/val.json)
         y_val: encoded integer labels validation
         le: LabelEncoder instance
-        
+
     Returns:
         model: trained LGBMClassifier
         val_f1: validation F1 score (PII only)
+        sample_weights: per-sample weights (digunakan XGBoost imbalance)
     """
     print("\n=== Training LightGBM (Imbalance) ===")
+    print(f"  Data: data/processed/imbalance/")
+    print(f"  Train samples: {X_train.shape[0]}, Val samples: {X_val.shape[0]}")
 
     # Compute sample weights
     class_weights = compute_class_weights(y_train, power=0.5)
@@ -65,89 +70,39 @@ def train_lightgbm_imbalance(X_train, y_train, y_train_str, X_val, y_val, le):
     return model, val_f1, sample_weights
 
 
-def balance_dataset(X_train, y_train, y_train_str, target_o_ratio=3, target_per_label=500, seed=42):
+def train_lightgbm_balance(X_train, y_train, y_train_str, X_val, y_val, le):
     """
-    Balance dataset dengan undersample class O dan oversample minority PII.
-    
-    Strategy:
-    - Undersample O: target = jumlah_PII_tokens * target_o_ratio
-    - Oversample minority PII: minimum target_per_label samples per class
-    
+    Train LightGBM dengan data balance dari data/processed/balance/.
+
+    Data sudah di-balance secara offline (pre-split), sehingga tidak perlu
+    melakukan undersample/oversample lagi di dalam kode.
+    Menggunakan min_child_samples=50 untuk mengurangi overfitting.
+
     Args:
-        X_train: sparse feature matrix
-        y_train: encoded integer labels
-        y_train_str: string labels
-        target_o_ratio: rasio O terhadap PII tokens
-        target_per_label: minimum samples per PII class
-        seed: random seed
-        
-    Returns:
-        X_bal: balanced feature matrix
-        y_bal: balanced integer labels
-        y_bal_str: balanced string labels
-    """
-    print("\n📊 Balancing dataset...")
-    label_counts = Counter(y_train_str)
-
-    print("Distribusi sebelum balance:")
-    for lbl, cnt in sorted(label_counts.items(), key=lambda x: -x[1]):
-        print(f"  {lbl}: {cnt}")
-
-    pii_indices = [i for i, lbl in enumerate(y_train_str) if lbl != "O"]
-    o_indices = [i for i, lbl in enumerate(y_train_str) if lbl == "O"]
-    target_o = len(pii_indices) * target_o_ratio
-
-    np.random.seed(seed)
-    o_sampled = np.random.choice(o_indices, size=min(target_o, len(o_indices)), replace=False)
-
-    # Oversample minority PII classes
-    extra_indices = []
-    for lbl, cnt in label_counts.items():
-        if lbl == "O":
-            continue
-        lbl_idx = [i for i, l in enumerate(y_train_str) if l == lbl]
-        if cnt < target_per_label:
-            extra = np.random.choice(lbl_idx, size=target_per_label - cnt, replace=True)
-            extra_indices.extend(extra)
-
-    balanced_indices = np.array(list(o_sampled) + pii_indices + extra_indices)
-    np.random.shuffle(balanced_indices)
-
-    X_bal = X_train[balanced_indices]
-    y_bal = y_train[balanced_indices]
-    y_bal_str = [y_train_str[i] for i in balanced_indices]
-
-    print(f"\nDistribusi sesudah balance:")
-    for lbl, cnt in sorted(Counter(y_bal_str).items(), key=lambda x: -x[1]):
-        print(f"  {lbl}: {cnt}")
-    print(f"\nTotal: {len(y_bal)} token (sebelumnya: {len(y_train_str)})")
-
-    return X_bal, y_bal, y_bal_str
-
-
-def train_lightgbm_balance(X_train_bal, y_train_bal, y_train_bal_str, X_val, y_val, le):
-    """
-    Train LightGBM dengan data balanced.
-    
-    Menggunakan min_child_samples=50 (lebih tinggi dari imbalance)
-    untuk mengurangi overfitting pada data yang lebih kecil.
-    
-    Args:
-        X_train_bal: balanced sparse feature matrix
-        y_train_bal: balanced encoded integer labels
-        y_train_bal_str: balanced string labels (untuk weights)
-        X_val: sparse feature matrix validation
+        X_train: sparse feature matrix training (dari balance/train.json)
+        y_train: encoded integer labels training
+        y_train_str: string labels training (untuk weights)
+        X_val: sparse feature matrix validation (dari balance/val.json)
         y_val: encoded integer labels validation
         le: LabelEncoder instance
-        
+
     Returns:
         model: trained LGBMClassifier
         val_f1: validation F1 score (PII only)
+        sample_weights: per-sample weights
     """
     print("\n=== Training LightGBM (Balance) ===")
+    print(f"  Data: data/processed/balance/")
+    print(f"  Train samples: {X_train.shape[0]}, Val samples: {X_val.shape[0]}")
 
-    class_weights = compute_class_weights(y_train_bal, power=0.3)
-    sample_weights = get_sample_weights(y_train_bal, class_weights)
+    # Log distribusi label
+    label_counts = Counter(y_train_str)
+    print("  Distribusi label training:")
+    for lbl, cnt in sorted(label_counts.items(), key=lambda x: -x[1]):
+        print(f"    {lbl}: {cnt}")
+
+    class_weights = compute_class_weights(y_train, power=0.3)
+    sample_weights = get_sample_weights(y_train, class_weights)
 
     model = LGBMClassifier(
         n_estimators=600,
@@ -164,7 +119,7 @@ def train_lightgbm_balance(X_train_bal, y_train_bal, y_train_bal_str, X_val, y_v
         verbose=-1,
     )
 
-    model.fit(X_train_bal, y_train_bal, sample_weight=sample_weights)
+    model.fit(X_train, y_train, sample_weight=sample_weights)
 
     val_f1 = quick_f1_pii(
         le.inverse_transform(y_val),

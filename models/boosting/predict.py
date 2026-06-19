@@ -1,6 +1,10 @@
 """
 Prediction & evaluation script untuk Boosting Models.
 Mencakup threshold tuning, prediksi, save CSV, dan save metrics JSON.
+
+Mendukung pipeline dengan dua set test data terpisah:
+  - Imbalance: dari data/processed/imbalance/test.json
+  - Balance:   dari data/processed/balance/test.json
 """
 
 import os
@@ -18,10 +22,10 @@ from models.boosting.feature_extraction import quick_f1_pii
 def predict_with_threshold(model, X, le, o_idx_remapped, threshold, reverse_remap):
     """
     Prediksi dengan threshold pada probabilitas non-O.
-    
+
     Jika model memprediksi O tapi probabilitas class non-O terbaik >= threshold,
     maka override prediksi ke class non-O tersebut.
-    
+
     Args:
         model: trained model (LightGBM atau XGBoost)
         X: feature matrix
@@ -29,7 +33,7 @@ def predict_with_threshold(model, X, le, o_idx_remapped, threshold, reverse_rema
         o_idx_remapped: index label O dalam remapped space
         threshold: probability threshold untuk override O
         reverse_remap: Dict[remapped_label -> original_label]
-        
+
     Returns:
         List[str]: predicted label strings
     """
@@ -53,7 +57,7 @@ def predict_with_threshold(model, X, le, o_idx_remapped, threshold, reverse_rema
 def predict_with_threshold_xgb(model, X, le, o_idx_original, threshold, reverse_remap):
     """
     Prediksi dengan threshold khusus XGBoost (handle remapped labels).
-    
+
     Args:
         model: trained XGBClassifier
         X: feature matrix
@@ -61,7 +65,7 @@ def predict_with_threshold_xgb(model, X, le, o_idx_original, threshold, reverse_
         o_idx_original: index label O dalam original LabelEncoder space
         threshold: probability threshold
         reverse_remap: Dict[remapped_label -> original_label]
-        
+
     Returns:
         List[str]: predicted label strings
     """
@@ -93,7 +97,7 @@ def tune_threshold(model, X_val, y_val_str, le, o_idx_remapped, reverse_remap,
                    thresholds=None, predict_fn=None):
     """
     Tune threshold optimal pada validation set.
-    
+
     Args:
         model: trained model
         X_val: validation feature matrix
@@ -103,7 +107,7 @@ def tune_threshold(model, X_val, y_val_str, le, o_idx_remapped, reverse_remap,
         reverse_remap: label reverse mapping
         thresholds: list of thresholds to try
         predict_fn: prediction function to use
-        
+
     Returns:
         best_threshold: optimal threshold
         best_f1: best F1 score
@@ -133,9 +137,9 @@ def tune_threshold(model, X_val, y_val_str, le, o_idx_remapped, reverse_remap,
 def save_predictions_csv(meta, pred_labels_str, output_path):
     """
     Save predictions ke CSV format yang sesuai ketentuan project.
-    
+
     Format: document_id,token,true_label,pred_label
-    
+
     Args:
         meta: list of (doc_id, token, true_label) tuples
         pred_labels_str: list of predicted label strings
@@ -161,7 +165,7 @@ def save_metrics_json(csv_path, model_name, output_path):
     """
     Evaluate predictions dari CSV dan save metrics ke JSON.
     Menggunakan src/evaluate.py dari project.
-    
+
     Args:
         csv_path: path ke CSV predictions
         model_name: nama model untuk identifikasi
@@ -183,24 +187,35 @@ def save_metrics_json(csv_path, model_name, output_path):
 # ============================================================
 
 def run_prediction_pipeline(
-    models_dict, X_test, X_val, y_val_str, meta_test, le, o_index,
+    models_dict,
+    X_test_imb, X_val_imb, y_val_imb_str, meta_test_imb,
+    X_test_bal, X_val_bal, y_val_bal_str, meta_test_bal,
+    le, o_index,
     remap_imb, reverse_remap_imb, remap_bal, reverse_remap_bal,
 ):
     """
     Jalankan pipeline prediksi lengkap untuk semua 4 varian model.
-    
+
+    Setiap model menggunakan test data dari folder yang sesuai:
+      - Imbalance models → data/processed/imbalance/test.json
+      - Balance models   → data/processed/balance/test.json
+
     Pipeline per model:
-    1. Tune threshold di validation set
-    2. Predict di test set dengan threshold terbaik
+    1. Tune threshold di validation set (dari folder yang sesuai)
+    2. Predict di test set (dari folder yang sesuai)
     3. Save CSV predictions
     4. Evaluate dan save metrics JSON
-    
+
     Args:
         models_dict: dict dengan keys 'lgb_imb', 'xgb_imb', 'lgb_bal', 'xgb_bal'
-        X_test: test feature matrix
-        X_val: validation feature matrix
-        y_val_str: validation string labels
-        meta_test: test metadata (doc_id, token, true_label)
+        X_test_imb: test feature matrix (dari imbalance/test.json)
+        X_val_imb: validation feature matrix (dari imbalance/val.json)
+        y_val_imb_str: validation string labels (imbalance)
+        meta_test_imb: test metadata imbalance (doc_id, token, true_label)
+        X_test_bal: test feature matrix (dari balance/test.json)
+        X_val_bal: validation feature matrix (dari balance/val.json)
+        y_val_bal_str: validation string labels (balance)
+        meta_test_bal: test metadata balance (doc_id, token, true_label)
         le: LabelEncoder instance
         o_index: index label O dalam original LabelEncoder
         remap_imb: imbalance label remap
@@ -216,17 +231,18 @@ def run_prediction_pipeline(
     # ── 1. LightGBM Imbalance ──
     print("\n" + "=" * 60)
     print("🔹 LightGBM Imbalance — Threshold Tuning")
+    print("  Data: imbalance/val.json → imbalance/test.json")
     print("=" * 60)
     best_th, _ = tune_threshold(
-        models_dict["lgb_imb"], X_val, y_val_str, le,
+        models_dict["lgb_imb"], X_val_imb, y_val_imb_str, le,
         o_idx_remapped_imb, reverse_remap_imb,
         predict_fn=predict_with_threshold,
     )
     pred = predict_with_threshold(
-        models_dict["lgb_imb"], X_test, le,
+        models_dict["lgb_imb"], X_test_imb, le,
         o_idx_remapped_imb, best_th, reverse_remap_imb,
     )
-    save_predictions_csv(meta_test, pred, "results/predictions/lightgbm_imbalance_predictions.csv")
+    save_predictions_csv(meta_test_imb, pred, "results/predictions/lightgbm_imbalance_predictions.csv")
     m = save_metrics_json(
         "results/predictions/lightgbm_imbalance_predictions.csv",
         "lightgbm_imbalance",
@@ -237,17 +253,18 @@ def run_prediction_pipeline(
     # ── 2. XGBoost Imbalance ──
     print("\n" + "=" * 60)
     print("🔹 XGBoost Imbalance — Threshold Tuning")
+    print("  Data: imbalance/val.json → imbalance/test.json")
     print("=" * 60)
     best_th, _ = tune_threshold(
-        models_dict["xgb_imb"], X_val, y_val_str, le,
+        models_dict["xgb_imb"], X_val_imb, y_val_imb_str, le,
         o_index, reverse_remap_imb,
         predict_fn=predict_with_threshold_xgb,
     )
     pred = predict_with_threshold_xgb(
-        models_dict["xgb_imb"], X_test, le,
+        models_dict["xgb_imb"], X_test_imb, le,
         o_index, best_th, reverse_remap_imb,
     )
-    save_predictions_csv(meta_test, pred, "results/predictions/xgboost_imbalance_predictions.csv")
+    save_predictions_csv(meta_test_imb, pred, "results/predictions/xgboost_imbalance_predictions.csv")
     m = save_metrics_json(
         "results/predictions/xgboost_imbalance_predictions.csv",
         "xgboost_imbalance",
@@ -258,17 +275,18 @@ def run_prediction_pipeline(
     # ── 3. LightGBM Balance ──
     print("\n" + "=" * 60)
     print("🔹 LightGBM Balance — Threshold Tuning")
+    print("  Data: balance/val.json → balance/test.json")
     print("=" * 60)
     best_th, _ = tune_threshold(
-        models_dict["lgb_bal"], X_val, y_val_str, le,
+        models_dict["lgb_bal"], X_val_bal, y_val_bal_str, le,
         o_idx_remapped_bal, reverse_remap_bal,
         predict_fn=predict_with_threshold,
     )
     pred = predict_with_threshold(
-        models_dict["lgb_bal"], X_test, le,
+        models_dict["lgb_bal"], X_test_bal, le,
         o_idx_remapped_bal, best_th, reverse_remap_bal,
     )
-    save_predictions_csv(meta_test, pred, "results/predictions/lightgbm_balance_predictions.csv")
+    save_predictions_csv(meta_test_bal, pred, "results/predictions/lightgbm_balance_predictions.csv")
     m = save_metrics_json(
         "results/predictions/lightgbm_balance_predictions.csv",
         "lightgbm_balance",
@@ -279,17 +297,18 @@ def run_prediction_pipeline(
     # ── 4. XGBoost Balance ──
     print("\n" + "=" * 60)
     print("🔹 XGBoost Balance — Threshold Tuning")
+    print("  Data: balance/val.json → balance/test.json")
     print("=" * 60)
     best_th, _ = tune_threshold(
-        models_dict["xgb_bal"], X_val, y_val_str, le,
+        models_dict["xgb_bal"], X_val_bal, y_val_bal_str, le,
         o_index, reverse_remap_bal,
         predict_fn=predict_with_threshold_xgb,
     )
     pred = predict_with_threshold_xgb(
-        models_dict["xgb_bal"], X_test, le,
+        models_dict["xgb_bal"], X_test_bal, le,
         o_index, best_th, reverse_remap_bal,
     )
-    save_predictions_csv(meta_test, pred, "results/predictions/xgboost_balance_predictions.csv")
+    save_predictions_csv(meta_test_bal, pred, "results/predictions/xgboost_balance_predictions.csv")
     m = save_metrics_json(
         "results/predictions/xgboost_balance_predictions.csv",
         "xgboost_balance",
