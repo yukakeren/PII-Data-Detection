@@ -1,0 +1,181 @@
+{
+  "model": "distilbert_imbfix_retry_20260620",
+  "base_model": "distilbert-base-uncased",
+  "total_tokens": 1161421,
+  "token_level": {
+    "precision": 0.7374,
+    "recall": 0.8921,
+    "f1": 0.8074,
+    "total_tp": 587,
+    "total_fp": 209,
+    "total_fn": 71,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 0.875,
+        "recall": 0.875,
+        "f1": 0.875,
+        "tp": 7,
+        "fp": 1,
+        "fn": 1
+      },
+      "B-ID_NUM": {
+        "precision": 0.6571,
+        "recall": 0.92,
+        "f1": 0.7667,
+        "tp": 23,
+        "fp": 12,
+        "fn": 2
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.718,
+        "recall": 0.8594,
+        "f1": 0.7824,
+        "tp": 275,
+        "fp": 108,
+        "fn": 45
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.431,
+        "recall": 1.0,
+        "f1": 0.6024,
+        "tp": 25,
+        "fp": 33,
+        "fn": 0
+      },
+      "B-USERNAME": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.8237,
+        "recall": 0.9245,
+        "f1": 0.8712,
+        "tp": 257,
+        "fp": 55,
+        "fn": 21
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.6378,
+    "recall": 0.8364,
+    "f1": 0.7237,
+    "total_tp": 317,
+    "total_fp": 180,
+    "total_fn": 62
+  },
+  "validation_metrics": {
+    "token_level": {
+      "precision": 0.7457,
+      "recall": 0.8428,
+      "f1": 0.7912,
+      "total_tp": 343,
+      "total_fp": 117,
+      "total_fn": 64,
+      "per_class": {
+        "B-EMAIL": {
+          "precision": 0.7143,
+          "recall": 1.0,
+          "f1": 0.8333,
+          "tp": 5,
+          "fp": 2,
+          "fn": 0
+        },
+        "B-ID_NUM": {
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "tp": 21,
+          "fp": 3,
+          "fn": 3
+        },
+        "B-NAME_STUDENT": {
+          "precision": 0.7678,
+          "recall": 0.7714,
+          "f1": 0.7696,
+          "tp": 162,
+          "fp": 49,
+          "fn": 48
+        },
+        "B-PHONE_NUM": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "B-URL_PERSONAL": {
+          "precision": 0.3103,
+          "recall": 1.0,
+          "f1": 0.4737,
+          "tp": 9,
+          "fp": 20,
+          "fn": 0
+        },
+        "I-NAME_STUDENT": {
+          "precision": 0.7814,
+          "recall": 0.9226,
+          "f1": 0.8462,
+          "tp": 143,
+          "fp": 40,
+          "fn": 12
+        },
+        "I-PHONE_NUM": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "tp": 3,
+          "fp": 3,
+          "fn": 0
+        }
+      }
+    },
+    "entity_level": {
+      "precision": 0.6595,
+      "recall": 0.739,
+      "f1": 0.697,
+      "total_tp": 184,
+      "total_fp": 95,
+      "total_fn": 65
+    },
+    "total_tokens": 595304
+  },
+  "training": {
+    "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "epochs": 3,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 5e-05,
+    "max_length": 256,
+    "chunk_size": 128,
+    "loss_mode": "sqrt_balanced",
+    "warmup_steps": 377,
+    "train_chunks": 20100,
+    "val_chunks": 5075,
+    "test_chunks": 9927,
+    "seed": 42,
+    "train_metrics": {
+      "train_runtime": 1367.8047,
+      "train_samples_per_second": 44.085,
+      "train_steps_per_second": 2.757,
+      "total_flos": 3940116896102400.0,
+      "train_loss": 0.03361571724722925,
+      "epoch": 3.0
+    },
+    "best_metric": 0.697,
+    "best_checkpoint": "models/transformer/distilbert-pii-imbfix-retry/checkpoint-3771"
+  }
+}
