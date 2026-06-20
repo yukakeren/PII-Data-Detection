@@ -1,0 +1,192 @@
+{
+  "model": "deberta_imbfix_retry_20260620",
+  "base_model": "microsoft/deberta-v3-small",
+  "total_tokens": 1161421,
+  "token_level": {
+    "precision": 0.7027,
+    "recall": 0.7006,
+    "f1": 0.7017,
+    "total_tp": 461,
+    "total_fp": 195,
+    "total_fn": 197,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      "B-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 25
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.6784,
+        "recall": 0.725,
+        "f1": 0.7009,
+        "tp": 232,
+        "fp": 110,
+        "fn": 88
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 25
+      },
+      "B-USERNAME": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "I-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 3,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.7363,
+        "recall": 0.8237,
+        "f1": 0.7776,
+        "tp": 229,
+        "fp": 82,
+        "fn": 49
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.5385,
+    "recall": 0.5541,
+    "f1": 0.5462,
+    "total_tp": 210,
+    "total_fp": 180,
+    "total_fn": 169
+  },
+  "validation_metrics": {
+    "token_level": {
+      "precision": 0.6971,
+      "recall": 0.5995,
+      "f1": 0.6446,
+      "total_tp": 244,
+      "total_fp": 106,
+      "total_fn": 163,
+      "per_class": {
+        "B-EMAIL": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 5
+        },
+        "B-ID_NUM": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 24
+        },
+        "B-NAME_STUDENT": {
+          "precision": 0.6703,
+          "recall": 0.5905,
+          "f1": 0.6278,
+          "tp": 124,
+          "fp": 61,
+          "fn": 86
+        },
+        "B-PHONE_NUM": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "B-URL_PERSONAL": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 9
+        },
+        "I-ID_NUM": {
+          "precision": 0.0,
+          "recall": 0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 2,
+          "fn": 0
+        },
+        "I-NAME_STUDENT": {
+          "precision": 0.7362,
+          "recall": 0.7742,
+          "f1": 0.7547,
+          "tp": 120,
+          "fp": 43,
+          "fn": 35
+        },
+        "I-PHONE_NUM": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 3
+        }
+      }
+    },
+    "entity_level": {
+      "precision": 0.4953,
+      "recall": 0.4257,
+      "f1": 0.4579,
+      "total_tp": 106,
+      "total_fp": 108,
+      "total_fn": 143
+    },
+    "total_tokens": 595304
+  },
+  "training": {
+    "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "epochs": 5,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 1e-05,
+    "max_length": 256,
+    "chunk_size": 128,
+    "loss_mode": "sqrt_balanced",
+    "warmup_steps": 628,
+    "train_chunks": 20100,
+    "val_chunks": 5075,
+    "test_chunks": 9927,
+    "seed": 42,
+    "optim": "adamw_torch",
+    "max_grad_norm": 0.5,
+    "bf16": true,
+    "train_metrics": {
+      "train_runtime": 3348.5364,
+      "train_samples_per_second": 30.013,
+      "train_steps_per_second": 1.877,
+      "total_flos": 6567098602752000.0,
+      "train_loss": 1.997874417415003,
+      "epoch": 5.0
+    },
+    "best_metric": 0.4652,
+    "best_checkpoint": "models/transformer/deberta-pii-imbfix-retry/checkpoint-5028"
+  }
+}

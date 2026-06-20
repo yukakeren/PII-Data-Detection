@@ -1,0 +1,20 @@
+{
+  "train.json": {
+    "rows": 3492,
+    "docs": 3492,
+    "tokens": 2550054,
+    "pii": 1386
+  },
+  "val.json": {
+    "rows": 873,
+    "docs": 873,
+    "tokens": 641414,
+    "pii": 407
+  },
+  "test_internal.json": {
+    "rows": 1698,
+    "docs": 1698,
+    "tokens": 1260090,
+    "pii": 658
+  }
+}
