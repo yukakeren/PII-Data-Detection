@@ -3,12 +3,6 @@ import string
 
 
 def word_shape(token):
-    """
-    Convert token into shape pattern
-    Example:
-    Farras -> Xxxxxx
-    ITS2025 -> XXXdddd
-    """
     shape = ""
 
     for char in token:
@@ -25,83 +19,145 @@ def word_shape(token):
 
 
 def is_email(token):
-    pattern = r"^[\w\.-]+@[\w\.-]+\.\w+$"
-    return bool(re.match(pattern, token))
+    return bool(
+        re.match(
+            r"^[\w\.-]+@[\w\.-]+\.\w+$",
+            token
+        )
+    )
 
 
 def is_url(token):
-    pattern = r"(http|https|www\.)"
-    return bool(re.search(pattern, token.lower()))
+    return bool(
+        re.search(
+            r"(http|https|www\.)",
+            token.lower()
+        )
+    )
 
 
 def is_phone(token):
-    digits = re.sub(r"\D", "", token)
-    return len(digits) >= 8
+    return bool(
+        re.match(
+            r"^[+]?[0-9()\-\s]+$",
+            token
+        )
+    )
 
 
 def token_features(tokens, i):
+
     token = tokens[i]
 
     features = {
         "bias": 1.0,
 
-        # token info
+        # basic
         "token.lower": token.lower(),
+        "token.len": len(token),
         "token.isupper": token.isupper(),
         "token.istitle": token.istitle(),
         "token.isdigit": token.isdigit(),
-        "token.len": len(token),
+        "token.isalpha": token.isalpha(),
 
-        # prefix suffix
+        # prefixes suffixes
         "prefix1": token[:1],
         "prefix2": token[:2],
         "prefix3": token[:3],
+
         "suffix1": token[-1:],
         "suffix2": token[-2:],
         "suffix3": token[-3:],
 
-        # pattern
-        "word_shape": word_shape(token),
+        # shape
+        "shape": word_shape(token),
 
-        # punctuation
-        "is_punct": token in string.punctuation,
+        # symbols
+        "contains_digit":
+            any(c.isdigit() for c in token),
 
-        # regex based features
-        "has_email_pattern": is_email(token),
-        "has_url_pattern": is_url(token),
-        "has_phone_pattern": is_phone(token),
-        "contains_at": "@" in token,
-        
-        "has_digit": any(c.isdigit() for c in token),
-        "all_caps": token.isupper(),
-        "title_case": token.istitle(),
-        "is_alpha": token.isalpha(),
-        "contains_dash": "-" in token,
-        "contains_dot": "." in token,
+        "contains_at":
+            "@" in token,
+
+        "contains_dot":
+            "." in token,
+
+        "contains_dash":
+            "-" in token,
+
+        "contains_slash":
+            "/" in token,
+
+        "is_punct":
+            token in string.punctuation,
+
+        # regex feature
+        "is_email":
+            is_email(token),
+
+        "is_url":
+            is_url(token),
+
+        "is_phone":
+            is_phone(token),
+
+        "looks_username":
+            token.startswith("@"),
+
+        "all_caps":
+            token.isupper(),
+
+        "title_case":
+            token.istitle(),
     }
 
-    # previous 2 tokens
-    for offset in [1, 2]:
-        if i - offset >= 0:
-            prev = tokens[i - offset]
-            features[f"-{offset}:token.lower"] = prev.lower()
-            features[f"-{offset}:isupper"] = prev.isupper()
-            features[f"-{offset}:shape"] = word_shape(prev)
-        else:
-            features[f"BOS-{offset}"] = True
+    # previous token
+    if i > 0:
+        prev = tokens[i - 1]
 
-    # next 2 tokens
-    for offset in [1, 2]:
-        if i + offset < len(tokens):
-            nxt = tokens[i + offset]
-            features[f"+{offset}:token.lower"] = nxt.lower()
-            features[f"+{offset}:isupper"] = nxt.isupper()
-            features[f"+{offset}:shape"] = word_shape(nxt)
-        else:
-            features[f"EOS+{offset}"] = True
+        features.update({
+            "-1:lower": prev.lower(),
+            "-1:shape": word_shape(prev),
+            "-1:istitle": prev.istitle(),
+
+            "-1:is_email":
+                is_email(prev),
+
+            "-1:is_url":
+                is_url(prev),
+
+            "-1:is_phone":
+                is_phone(prev),
+        })
+    else:
+        features["BOS"] = True
+
+    # next token
+    if i < len(tokens) - 1:
+        nxt = tokens[i + 1]
+
+        features.update({
+            "+1:lower": nxt.lower(),
+            "+1:shape": word_shape(nxt),
+            "+1:istitle": nxt.istitle(),
+
+            "+1:is_email":
+                is_email(nxt),
+
+            "+1:is_url":
+                is_url(nxt),
+
+            "+1:is_phone":
+                is_phone(nxt),
+        })
+    else:
+        features["EOS"] = True
 
     return features
 
 
 def sentence_features(tokens):
-    return [token_features(tokens, i) for i in range(len(tokens))]
+    return [
+        token_features(tokens, i)
+        for i in range(len(tokens))
+    ]

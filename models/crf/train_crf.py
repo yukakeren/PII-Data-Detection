@@ -26,15 +26,13 @@ from collections import defaultdict
 from feature_extraction import sentence_features
 
 
-BASE_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "../..")
-)
 
-DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
+# DATA_DIR = os.path.join(BASE_DIR, "data", "processed", "balance")
+DATA_DIR = os.path.join(BASE_DIR, "data", "processed", "imbalance")
 
 TRAIN_PATH = os.path.join(DATA_DIR, "train.json")
 VAL_PATH = os.path.join(DATA_DIR, "val.json")
-TEST_PATH = os.path.join(DATA_DIR, "test_internal.json")
+TEST_PATH = os.path.join(DATA_DIR, "test.json")
 
 LABEL_SCHEMA_PATH = os.path.join(
     BASE_DIR,
@@ -84,7 +82,6 @@ def prepare_dataset(data):
             if token.strip() == "":
                 continue
 
-            # VALIDASI LABEL
             if label not in VALID_LABELS:
                 raise ValueError(
                     f"Unknown label: {label}"
@@ -135,9 +132,16 @@ crf = sklearn_crfsuite.CRF(
     verbose=True
 )
 
+print("\nTraining started...")
 crf.fit(X_train, y_train)
 
-model_path = os.path.join(MODEL_DIR, "crf_model.pkl")
+print("Training finished!")
+
+model_path = os.path.join(
+    MODEL_DIR,
+    "crf_model.pkl"
+)
+
 joblib.dump(crf, model_path)
 
 print(f"Model saved: {model_path}")
@@ -146,13 +150,14 @@ print("Evaluating validation set...")
 
 val_preds = crf.predict(X_val)
 
-from seqeval.metrics import classification_report
-
 print("\nClassification Report:")
 print(classification_report(y_val, val_preds))
 
 
-def compute_token_metrics(y_true, y_pred):
+def compute_token_metrics(
+    y_true,
+    y_pred
+):
     stats = defaultdict(
         lambda: {
             "tp": 0,
@@ -161,9 +166,14 @@ def compute_token_metrics(y_true, y_pred):
         }
     )
 
-    total_tp = total_fp = total_fn = 0
+    total_tp = 0
+    total_fp = 0
+    total_fn = 0
 
-    for true_seq, pred_seq in zip(y_true, y_pred):
+    for true_seq, pred_seq in zip(
+        y_true,
+        y_pred
+    ):
         for true_label, pred_label in zip(
             true_seq,
             pred_seq
@@ -202,12 +212,14 @@ def compute_token_metrics(y_true, y_pred):
 
         precision = (
             tp / (tp + fp)
-            if (tp + fp) > 0 else 0
+            if (tp + fp) > 0
+            else 0
         )
 
         recall = (
             tp / (tp + fn)
-            if (tp + fn) > 0 else 0
+            if (tp + fn) > 0
+            else 0
         )
 
         f1 = (
@@ -300,7 +312,10 @@ metric_path = os.path.join(
     "crf_metrics.json"
 )
 
-with open(metric_path, "w") as f:
+with open(
+    metric_path,
+    "w"
+) as f:
     json.dump(
         metrics,
         f,
@@ -316,7 +331,10 @@ test_preds = crf.predict(X_test)
 
 rows = []
 
-for doc, pred_labels in zip(test_data, test_preds):
+for doc, pred_labels in zip(
+    test_data,
+    test_preds
+):
     doc_id = doc["document"]
 
     filtered_tokens = []
@@ -351,7 +369,11 @@ csv_path = os.path.join(
     "crf_predictions.csv"
 )
 
-df.to_csv(csv_path, index=False)
+df.to_csv(
+    csv_path,
+    index=False,
+    encoding="utf-8"
+)
 
 print(len(y_val))
 print(sum(len(seq) for seq in y_val))
