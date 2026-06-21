@@ -682,7 +682,7 @@ document_id,token,true_label,pred_label
 20,Innovation,O,O
 20,Sindy,B-NAME_STUDENT,B-NAME_STUDENT
 20,Samaca,I-NAME_STUDENT,I-NAME_STUDENT
-20,Gitam,O,O
+20,Gitam,O,I-NAME_STUDENT
 20,University,O,O
 20,December,O,O
 20,",",O,O
@@ -2673,7 +2673,7 @@ document_id,token,true_label,pred_label
 104,Path,O,O
 104,to,O,O
 104,Innovation,O,O
-104,Dr,O,O
+104,Dr,O,B-NAME_STUDENT
 104,Sakir,B-NAME_STUDENT,B-NAME_STUDENT
 104,Ahmad,I-NAME_STUDENT,I-NAME_STUDENT
 104,Challenge,O,O
@@ -3721,7 +3721,7 @@ document_id,token,true_label,pred_label
 136,.,O,O
 136,Regards,O,O
 136,",",O,O
-136,Al,B-NAME_STUDENT,B-NAME_STUDENT
+136,Al,B-NAME_STUDENT,O
 136,My,O,O
 136,First,O,O
 136,Mind,O,O
@@ -4364,7 +4364,7 @@ document_id,token,true_label,pred_label
 204,Reflection,O,O
 204,–,O,O
 204,Visualization,O,O
-204,Deiby,B-NAME_STUDENT,O
+204,Deiby,B-NAME_STUDENT,B-NAME_STUDENT
 204,Challenge,O,O
 204,For,O,O
 204,some,O,O
@@ -6705,8 +6705,8 @@ document_id,token,true_label,pred_label
 308,in,O,O
 308,the,O,O
 308,training,O,O
-308,Maud,B-NAME_STUDENT,B-NAME_STUDENT
-308,Dias,I-NAME_STUDENT,I-NAME_STUDENT
+308,Maud,B-NAME_STUDENT,O
+308,Dias,I-NAME_STUDENT,O
 308,",",O,O
 308,Talent,O,O
 308,Acquisition,O,O
@@ -21392,8 +21392,8 @@ document_id,token,true_label,pred_label
 2828,REFLECTION,O,O
 2828,-,O,O
 2828,Visualization,O,O
-2828,James,B-NAME_STUDENT,B-NAME_STUDENT
-2828,Gray,I-NAME_STUDENT,I-NAME_STUDENT
+2828,James,B-NAME_STUDENT,O
+2828,Gray,I-NAME_STUDENT,O
 2828,2,O,O
 2828,visualization,O,O
 2828,tools,O,O
@@ -21513,8 +21513,8 @@ document_id,token,true_label,pred_label
 2828,technologies,O,O
 2828,within,O,O
 2828,the,O,O
-2828,ISET,O,O
-2828,Charguia,O,O
+2828,ISET,O,B-NAME_STUDENT
+2828,Charguia,O,I-NAME_STUDENT
 2828,.,O,O
 2828,Additionally,O,O
 2828,",",O,O
@@ -21876,7 +21876,7 @@ document_id,token,true_label,pred_label
 3328,.,O,O
 3380,Prepared,O,O
 3380,By,O,O
-3380,Ofelia,B-NAME_STUDENT,B-NAME_STUDENT
+3380,Ofelia,B-NAME_STUDENT,O
 3380,CHALLENGE,O,O
 3380,&,O,O
 3380,SELECTION,O,O
@@ -22362,7 +22362,7 @@ document_id,token,true_label,pred_label
 3380,.,O,O
 3380,Prepared,O,O
 3380,By,O,O
-3380,Ofelia,B-NAME_STUDENT,B-NAME_STUDENT
+3380,Ofelia,B-NAME_STUDENT,O
 3540,Reflection,O,O
 3540,–,O,O
 3540,Storytelling,O,O
@@ -44952,7 +44952,7 @@ document_id,token,true_label,pred_label
 5060,2,O,O
 5060,),O,O
 5060,Nor,B-NAME_STUDENT,O
-5060,Fitri,I-NAME_STUDENT,I-NAME_STUDENT
+5060,Fitri,I-NAME_STUDENT,O
 5060,REFLECTION,O,O
 5060,ON,O,O
 5060,STORYTELLING,O,O
@@ -46956,7 +46956,7 @@ document_id,token,true_label,pred_label
 5116,given,O,O
 5116,by,O,O
 5116,Sophia,O,O
-5116,Zamora,O,O
+5116,Zamora,O,I-NAME_STUDENT
 5116,",",O,O
 5116,mind,O,O
 5116,mapping,O,O
@@ -47415,8 +47415,8 @@ document_id,token,true_label,pred_label
 5116,of,O,O
 5116,talking,O,O
 5116,about,O,O
-5116,Perle,B-NAME_STUDENT,B-NAME_STUDENT
-5116,Kamdem,I-NAME_STUDENT,I-NAME_STUDENT
+5116,Perle,B-NAME_STUDENT,O
+5116,Kamdem,I-NAME_STUDENT,O
 5116,Design,O,O
 5116,Thinking,O,O
 5116,–,O,O
@@ -52042,8 +52042,8 @@ document_id,token,true_label,pred_label
 5380,Customers,O,O
 5380,For,O,O
 5380,Every,O,O
-5380,Akshata,O,O
-5380,thrithya,O,O
+5380,Akshata,O,B-NAME_STUDENT
+5380,thrithya,O,I-NAME_STUDENT
 5380,Highlighting,O,O
 5380,of,O,O
 5380,my,O,O
@@ -59696,7 +59696,7 @@ document_id,token,true_label,pred_label
 5688,quickly,O,O
 5688,.,O,O
 5716,ID,O,O
-5716,meyermichelle,B-USERNAME,B-NAME_STUDENT
+5716,meyermichelle,B-USERNAME,O
 5716,Reflection,O,O
 5716,The,O,O
 5716,first,O,O
@@ -62400,7 +62400,7 @@ document_id,token,true_label,pred_label
 5796,Vw.:403489591437,B-ID_NUM,B-ID_NUM
 5796,Team,O,O
 5796,:,O,O
-5796,T-29,O,O
+5796,T-29,O,B-ID_NUM
 5796,Date,O,O
 5796,:,O,O
 5796,Introduction,O,O
@@ -68405,7 +68405,7 @@ document_id,token,true_label,pred_label
 6124,as,O,O
 6124,the,O,O
 6124,designer,O,O
-6124,Janine,O,O
+6124,Janine,O,B-NAME_STUDENT
 6124,Ma,O,O
 6124,says,O,O
 6124,",",O,O
@@ -69002,7 +69002,7 @@ document_id,token,true_label,pred_label
 6124,.,O,O
 6124,Victoria,B-NAME_STUDENT,B-NAME_STUDENT
 6124,Horton,I-NAME_STUDENT,I-NAME_STUDENT
-6124,Lima,O,O
+6124,Lima,O,I-NAME_STUDENT
 6124,",",O,O
 6124,Peru,O,O
 6148,AGILE,O,O
@@ -75378,8 +75378,8 @@ document_id,token,true_label,pred_label
 6600,whom,O,O
 6600,",",O,O
 6600,Dr.,O,O
-6600,Anirban,O,O
-6600,Maitra,O,O
+6600,Anirban,O,B-NAME_STUDENT
+6600,Maitra,O,I-NAME_STUDENT
 6600,of,O,O
 6600,the,O,O
 6600,Johns,O,O
@@ -78661,7 +78661,7 @@ document_id,token,true_label,pred_label
 6784,regards,O,O
 6784,",",O,O
 6784,Hennie,B-NAME_STUDENT,B-NAME_STUDENT
-6784,Dijkstra,I-NAME_STUDENT,I-NAME_STUDENT
+6784,Dijkstra,I-NAME_STUDENT,O
 6808,Amritpal,B-NAME_STUDENT,B-NAME_STUDENT
 6808,’s,O,O
 6808,Reflection,O,O
@@ -79937,7 +79937,7 @@ document_id,token,true_label,pred_label
 6900,Graded,O,O
 6900,Assessment,O,O
 6900,Claudio,B-NAME_STUDENT,B-NAME_STUDENT
-6900,Said,I-NAME_STUDENT,I-NAME_STUDENT
+6900,Said,I-NAME_STUDENT,O
 6900,Email,O,O
 6900,:,O,O
 6900,john03@yahoo.com,B-EMAIL,B-EMAIL
@@ -80354,7 +80354,7 @@ document_id,token,true_label,pred_label
 6900,Graded,O,O
 6900,Assessment,O,O
 6900,Claudio,B-NAME_STUDENT,B-NAME_STUDENT
-6900,Said,I-NAME_STUDENT,I-NAME_STUDENT
+6900,Said,I-NAME_STUDENT,O
 6900,Email,O,O
 6900,:,O,O
 6900,john03@yahoo.com,B-EMAIL,B-EMAIL
@@ -80993,14 +80993,14 @@ document_id,token,true_label,pred_label
 6904,these,O,O
 6904,.,O,O
 6904,Camilo,B-NAME_STUDENT,B-NAME_STUDENT
-6904,Lopez,I-NAME_STUDENT,I-NAME_STUDENT
+6904,Lopez,I-NAME_STUDENT,B-NAME_STUDENT
 6976,This,O,O
 6976,written,O,O
 6976,assignment,O,O
 6976,is,O,O
 6976,submitted,O,O
 6976,by,O,O
-6976,Ifeoma,B-NAME_STUDENT,B-NAME_STUDENT
+6976,Ifeoma,B-NAME_STUDENT,O
 6976,Kings,I-NAME_STUDENT,I-NAME_STUDENT
 6976,on,O,O
 6976,April,O,O
@@ -81736,8 +81736,8 @@ document_id,token,true_label,pred_label
 6976,is,O,O
 6976,submitted,O,O
 6976,by,O,O
-6976,Ifeoma,B-NAME_STUDENT,B-NAME_STUDENT
-6976,Kings,I-NAME_STUDENT,I-NAME_STUDENT
+6976,Ifeoma,B-NAME_STUDENT,O
+6976,Kings,I-NAME_STUDENT,O
 6976,on,O,O
 6976,April,O,O
 6976,28th,O,O
@@ -84397,14 +84397,14 @@ document_id,token,true_label,pred_label
 7156,Zhe,B-NAME_STUDENT,B-NAME_STUDENT
 7156,Basmah,I-NAME_STUDENT,I-NAME_STUDENT
 7156,ROLL,O,O
-7156,DM:705244534902,B-ID_NUM,B-ID_NUM
+7156,DM:705244534902,B-ID_NUM,O
 7156,EXPERIMENT-1,O,O
 7156,Project,O,O
 7156,:,O,O
 7156,Interviewer,O,O
 7156,Name,O,O
 7156,:,O,O
-7156,Zhe,B-NAME_STUDENT,B-NAME_STUDENT
+7156,Zhe,B-NAME_STUDENT,O
 7156,Interviewer,O,O
 7156,Roll,O,O
 7156,No,O,O
@@ -90658,7 +90658,7 @@ document_id,token,true_label,pred_label
 7548,family,O,O
 7548,.,O,O
 7548,Alejandra,B-NAME_STUDENT,B-NAME_STUDENT
-7548,Padilla,I-NAME_STUDENT,I-NAME_STUDENT
+7548,Padilla,I-NAME_STUDENT,O
 7548,Also,O,O
 7548,",",O,O
 7548,each,O,O
@@ -92393,7 +92393,7 @@ document_id,token,true_label,pred_label
 7676,Graduates,O,O
 7676,Employment,O,O
 7676,–,O,O
-7676,Sanella,O,O
+7676,Sanella,O,B-NAME_STUDENT
 7676,Submitted,O,O
 7676,on,O,O
 7676,:,O,O
@@ -93171,9 +93171,9 @@ document_id,token,true_label,pred_label
 7680,curated,O,O
 7680,by,O,O
 7680,professor,O,O
-7680,Crystal,O,O
+7680,Crystal,O,B-NAME_STUDENT
 7680,Luna,O,I-NAME_STUDENT
-7680,Maxprodesign,O,O
+7680,Maxprodesign,O,I-NAME_STUDENT
 7680,­,O,O
 7680,Mind,O,O
 7680,mapping,O,O
@@ -93847,7 +93847,7 @@ document_id,token,true_label,pred_label
 7708,),O,O
 7708,I,O,O
 7708,am,O,O
-7708,Daniela,B-NAME_STUDENT,B-NAME_STUDENT
+7708,Daniela,B-NAME_STUDENT,O
 7708,from,O,O
 7708,Hyderabad,O,O
 7708,I,O,O
@@ -100002,7 +100002,7 @@ document_id,token,true_label,pred_label
 8108,a,O,O
 8108,boy,O,O
 8108,named,O,O
-8108,Sameh,B-NAME_STUDENT,B-NAME_STUDENT
+8108,Sameh,B-NAME_STUDENT,O
 8108,",",O,O
 8108,a,O,O
 8108,student,O,O
@@ -100034,7 +100034,7 @@ document_id,token,true_label,pred_label
 8108,find,O,O
 8108,best,O,O
 8108,books.so,O,O
-8108,raj,O,B-NAME_STUDENT
+8108,raj,O,O
 8108,also,O,O
 8108,started,O,O
 8108,for,O,O
@@ -102146,8 +102146,8 @@ document_id,token,true_label,pred_label
 8316,following,O,O
 8316,question,O,O
 8316,:,O,O
-8316,Angela,B-NAME_STUDENT,B-NAME_STUDENT
-8316,Torres,I-NAME_STUDENT,I-NAME_STUDENT
+8316,Angela,B-NAME_STUDENT,O
+8316,Torres,I-NAME_STUDENT,O
 8316,(,O,O
 8316,ENEA,O,O
 8316,',O,O
@@ -102873,7 +102873,7 @@ document_id,token,true_label,pred_label
 8316,connections,O,O
 8316,also,O,O
 8316,!,O,O
-8316,Angela,B-NAME_STUDENT,B-NAME_STUDENT
+8316,Angela,B-NAME_STUDENT,O
 8316,Torres,I-NAME_STUDENT,I-NAME_STUDENT
 8316,(,O,O
 8316,ENEA,O,O
@@ -104618,7 +104618,7 @@ document_id,token,true_label,pred_label
 8344,small,O,O
 8344,companies,O,O
 8344,(,O,O
-8344,Marcel,O,O
+8344,Marcel,O,B-NAME_STUDENT
 8344,und,O,O
 8344,Mia,O,O
 8344,",",O,O
@@ -104650,9 +104650,9 @@ document_id,token,true_label,pred_label
 8344,how,O,O
 8344,to,O,O
 8344,make,O,O
-8344,Marcel,O,O
+8344,Marcel,O,B-NAME_STUDENT
 8344,and,O,O
-8344,Mia,O,O
+8344,Mia,O,B-NAME_STUDENT
 8344,satisfied,O,O
 8344,and,O,O
 8344,do,O,O
@@ -104684,7 +104684,7 @@ document_id,token,true_label,pred_label
 8344,not,O,O
 8344,to,O,O
 8344,focus,O,O
-8344,Tina,O,O
+8344,Tina,O,B-NAME_STUDENT
 8344,",",O,O
 8344,standing,O,O
 8344,for,O,O
@@ -104739,7 +104739,7 @@ document_id,token,true_label,pred_label
 8344,with,O,O
 8344,the,O,O
 8344,visualized,O,O
-8344,Tina,O,O
+8344,Tina,O,B-NAME_STUDENT
 8344,and,O,O
 8344,the,O,O
 8344,barriers,O,O
@@ -104757,7 +104757,7 @@ document_id,token,true_label,pred_label
 8344,marketing,O,O
 8344,process,O,O
 8344,for,O,O
-8344,Tina,O,O
+8344,Tina,O,B-NAME_STUDENT
 8344,.,O,O
 8344,Approach,O,O
 8344,The,O,O
@@ -104772,7 +104772,7 @@ document_id,token,true_label,pred_label
 8344,-,O,O
 8344,tall,O,O
 8344,visualized,O,O
-8344,Tina,O,O
+8344,Tina,O,B-NAME_STUDENT
 8344,was,O,O
 8344,the,O,O
 8344,key,O,O
@@ -105260,9 +105260,9 @@ document_id,token,true_label,pred_label
 8344,target,O,O
 8344,group,O,O
 8344,.,O,O
-8344,Marcel,O,O
+8344,Marcel,O,B-NAME_STUDENT
 8344,and,O,O
-8344,Mia,O,O
+8344,Mia,O,B-NAME_STUDENT
 8344,as,O,O
 8344,CEOs,O,O
 8344,of,O,O
@@ -125388,8 +125388,8 @@ document_id,token,true_label,pred_label
 8936,one,O,O
 8936,website,O,O
 8936,of,O,O
-8936,Kumar,O,O
-8936,Vicky,O,O
+8936,Kumar,O,B-NAME_STUDENT
+8936,Vicky,O,I-NAME_STUDENT
 8936,),O,O
 8936,and,O,O
 8936,every,O,O
@@ -158858,7 +158858,7 @@ document_id,token,true_label,pred_label
 9336,Projects,O,O
 9336,",",O,O
 9336,by,O,O
-9336,Antonio,B-NAME_STUDENT,B-NAME_STUDENT
+9336,Antonio,B-NAME_STUDENT,O
 9336,Hanson,I-NAME_STUDENT,I-NAME_STUDENT
 9336,Page,O,O
 9336,2,O,O
@@ -159185,7 +159185,7 @@ document_id,token,true_label,pred_label
 9336,Projects,O,O
 9336,",",O,O
 9336,by,O,O
-9336,Antonio,B-NAME_STUDENT,B-NAME_STUDENT
+9336,Antonio,B-NAME_STUDENT,O
 9336,Hanson,I-NAME_STUDENT,I-NAME_STUDENT
 9336,Page,O,O
 9336,3,O,O
@@ -167374,11 +167374,11 @@ document_id,token,true_label,pred_label
 9460,:,O,O
 9460,Anjali,B-NAME_STUDENT,B-NAME_STUDENT
 9460,Rajput,I-NAME_STUDENT,I-NAME_STUDENT
-9460,Lupe,B-NAME_STUDENT,B-NAME_STUDENT
-9460,King,I-NAME_STUDENT,I-NAME_STUDENT
+9460,Lupe,B-NAME_STUDENT,O
+9460,King,I-NAME_STUDENT,O
 9460,Jose,B-NAME_STUDENT,B-NAME_STUDENT
 9460,Luis,I-NAME_STUDENT,I-NAME_STUDENT
-9460,Jose,B-NAME_STUDENT,B-NAME_STUDENT
+9460,Jose,B-NAME_STUDENT,I-NAME_STUDENT
 9460,Luis,I-NAME_STUDENT,I-NAME_STUDENT
 9460,Interviewee,O,O
 9460,Name,O,O
@@ -174889,8 +174889,8 @@ document_id,token,true_label,pred_label
 9536,.,O,O
 9536,I,O,O
 9536,quote,O,O
-9536,Cinzia,O,O
-9536,Ahmed,O,O
+9536,Cinzia,O,B-NAME_STUDENT
+9536,Ahmed,O,I-NAME_STUDENT
 9536,:,O,O
 9536,this,O,O
 9536,tool,O,O
@@ -195139,7 +195139,7 @@ document_id,token,true_label,pred_label
 9760,Name,O,O
 9760,:,O,O
 9760,Bk,B-NAME_STUDENT,B-NAME_STUDENT
-9760,Bk,I-NAME_STUDENT,I-NAME_STUDENT
+9760,Bk,I-NAME_STUDENT,O
 9760,Roll,O,O
 9760,No,O,O
 9760,:,O,O
@@ -195336,9 +195336,9 @@ document_id,token,true_label,pred_label
 9760,.,O,O
 9760,Name,O,O
 9760,:,O,O
-9760,Bk,B-NAME_STUDENT,B-NAME_STUDENT
+9760,Bk,B-NAME_STUDENT,B-ID_NUM
 9760,Bk,I-NAME_STUDENT,I-NAME_STUDENT
-9760,Roll,O,O
+9760,Roll,O,B-ID_NUM
 9760,No,O,O
 9760,:,O,O
 9760,172801513686,B-ID_NUM,B-ID_NUM
@@ -195352,7 +195352,7 @@ document_id,token,true_label,pred_label
 9760,Queries,O,O
 9760,Meaning,O,O
 9760,Conclusion,O,O
-9760,Sama,B-NAME_STUDENT,B-NAME_STUDENT
+9760,Sama,B-NAME_STUDENT,B-ID_NUM
 9760,208798413907,B-ID_NUM,B-ID_NUM
 9760,Why,O,O
 9760,did,O,O
@@ -195400,7 +195400,7 @@ document_id,token,true_label,pred_label
 9760,and,O,O
 9760,pets,O,O
 9760,.,O,O
-9760,Md,B-NAME_STUDENT,B-NAME_STUDENT
+9760,Md,B-NAME_STUDENT,B-ID_NUM
 9760,347376430553,B-ID_NUM,B-ID_NUM
 9760,How,O,O
 9760,this,O,O
@@ -210719,7 +210719,7 @@ document_id,token,true_label,pred_label
 9920,One,O,O
 9920,day,O,O
 9920,",",O,O
-9920,Muhammad,B-NAME_STUDENT,B-NAME_STUDENT
+9920,Muhammad,B-NAME_STUDENT,O
 9920,enters,O,O
 9920,the,O,O
 9920,dining,O,O
@@ -210796,7 +210796,7 @@ document_id,token,true_label,pred_label
 9920,the,O,O
 9920,group,O,O
 9920,.,O,O
-9920,Muhammad,B-NAME_STUDENT,B-NAME_STUDENT
+9920,Muhammad,B-NAME_STUDENT,O
 9920,decides,O,O
 9920,to,O,O
 9920,try,O,O
@@ -217947,8 +217947,8 @@ document_id,token,true_label,pred_label
 9996,.,O,O
 9996,-done,O,O
 9996,by,O,O
-9996,Abiodun,B-NAME_STUDENT,O
-9996,Bertolini,I-NAME_STUDENT,O
+9996,Abiodun,B-NAME_STUDENT,B-NAME_STUDENT
+9996,Bertolini,I-NAME_STUDENT,I-NAME_STUDENT
 10000,DESIGN,O,O
 10000,THINKING,O,O
 10000,FOR,O,O
@@ -219123,7 +219123,7 @@ document_id,token,true_label,pred_label
 10008,and,O,O
 10008,images,O,O
 10008,Rafael,O,B-NAME_STUDENT
-10008,Pimenta,O,I-NAME_STUDENT
+10008,Pimenta,O,O
 10008,",",O,O
 10008,European,O,O
 10008,Banking,O,O
@@ -230541,8 +230541,8 @@ document_id,token,true_label,pred_label
 10132,the,O,O
 10132,material,O,O
 10132,.,O,O
-10140,PWC,O,O
-10140,ProEdge,O,O
+10140,PWC,O,B-NAME_STUDENT
+10140,ProEdge,O,I-NAME_STUDENT
 10140,–,O,O
 10140,Design,O,O
 10140,Thinking,O,O
@@ -243196,7 +243196,7 @@ document_id,token,true_label,pred_label
 10220,“,O,O
 10220,She,O,O
 10220,is,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,",",O,O
 10220,a,O,O
 10220,housewife,O,O
@@ -243251,7 +243251,7 @@ document_id,token,true_label,pred_label
 10220,banking,O,O
 10220,services,O,O
 10220,.,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,receives,O,O
 10220,social,O,O
 10220,programs,O,O
@@ -243343,7 +243343,7 @@ document_id,token,true_label,pred_label
 10220,pass,O,O
 10220,again,O,O
 10220,.,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,leaves,O,O
 10220,her,O,O
 10220,house,O,O
@@ -243416,7 +243416,7 @@ document_id,token,true_label,pred_label
 10220,'s,O,O
 10220,rays,O,O
 10220,",",O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,achieves,O,O
 10220,to,O,O
 10220,receive,O,O
@@ -243439,7 +243439,7 @@ document_id,token,true_label,pred_label
 10220,home,O,O
 10220,.,O,O
 10220,However,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,knows,O,O
 10220,that,O,O
 10220,she,O,O
@@ -243459,7 +243459,7 @@ document_id,token,true_label,pred_label
 10220,last,O,O
 10220,time,O,O
 10220,.,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,arrives,O,O
 10220,at,O,O
 10220,her,O,O
@@ -243497,7 +243497,7 @@ document_id,token,true_label,pred_label
 10220,ate,O,O
 10220,anyting,O,O
 10220,.,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,is,O,O
 10220,tired,O,O
 10220,but,O,O
@@ -243822,7 +243822,7 @@ document_id,token,true_label,pred_label
 10220,?,O,O
 10220,Imagine,O,O
 10220,that,O,O
-10220,Maria,O,O
+10220,Maria,O,B-NAME_STUDENT
 10220,only,O,O
 10220,had,O,O
 10220,to,O,O
@@ -265756,12 +265756,12 @@ document_id,token,true_label,pred_label
 10448,Anybody,O,O
 10448,can,O,O
 10448,use,O,O
-10448,Kanali,O,B-NAME_STUDENT
+10448,Kanali,O,O
 10448,Foundation,O,O
 10448,Summary,O,O
 10448,Group,O,O
 10448,i,O,O
-10448,d,O,O
+10448,d,O,B-ID_NUM
 10448,:,O,O
 10448,027693,B-ID_NUM,B-ID_NUM
 10448,Date,O,O
@@ -283831,8 +283831,8 @@ document_id,token,true_label,pred_label
 10620,solution,O,O
 10620,out,O,O
 10620,of,O,O
-10620,Saravanan,B-NAME_STUDENT,B-NAME_STUDENT
-10620,Saravanan,I-NAME_STUDENT,I-NAME_STUDENT
+10620,Saravanan,B-NAME_STUDENT,O
+10620,Saravanan,I-NAME_STUDENT,O
 10620,this,O,O
 10620,.,O,O
 10620,People,O,O
@@ -285304,7 +285304,7 @@ document_id,token,true_label,pred_label
 10632,meet,O,O
 10632,the,O,O
 10632,expenses,O,O
-10632,Rahim,O,O
+10632,Rahim,O,B-NAME_STUDENT
 10632,had,O,O
 10632,to,O,O
 10632,take,O,O
@@ -285389,7 +285389,7 @@ document_id,token,true_label,pred_label
 10632,poor,O,O
 10632,farmers,O,O
 10632,like,O,O
-10632,Rahim,O,O
+10632,Rahim,O,B-NAME_STUDENT
 10632,keeps,O,O
 10632,being,O,O
 10632,underserved,O,O
@@ -287455,8 +287455,8 @@ document_id,token,true_label,pred_label
 10648,3,O,O
 10648,video,O,O
 10648,by,O,O
-10648,Neha,O,O
-10648,Kumar,O,O
+10648,Neha,O,B-NAME_STUDENT
+10648,Kumar,O,I-NAME_STUDENT
 10648,),O,O
 10648,as,O,O
 10648,a,O,O
@@ -288822,8 +288822,8 @@ document_id,token,true_label,pred_label
 10668,happy,O,O
 10668,audience,O,O
 10668,.,O,O
-10672,Dip,B-NAME_STUDENT,B-NAME_STUDENT
-10672,Ari,I-NAME_STUDENT,I-NAME_STUDENT
+10672,Dip,B-NAME_STUDENT,O
+10672,Ari,I-NAME_STUDENT,O
 10672,Assignment,O,O
 10672,on-,O,O
 10672,Learning,O,O
@@ -289421,8 +289421,8 @@ document_id,token,true_label,pred_label
 10672,from,O,O
 10672,what,O,O
 10672,we,O,O
-10672,Dip,B-NAME_STUDENT,B-NAME_STUDENT
-10672,Ari,I-NAME_STUDENT,I-NAME_STUDENT
+10672,Dip,B-NAME_STUDENT,O
+10672,Ari,I-NAME_STUDENT,O
 10672,Assignment,O,O
 10672,on-,O,O
 10672,Learning,O,O
@@ -290708,9 +290708,9 @@ document_id,token,true_label,pred_label
 10720,was,O,O
 10720,founded,O,O
 10720,by,O,O
-10720,David,O,O
+10720,David,O,B-NAME_STUDENT
 10720,H.,O,O
-10720,McConnell,O,O
+10720,McConnell,O,I-NAME_STUDENT
 10720,",",O,O
 10720,a,O,O
 10720,door,O,O
@@ -291361,7 +291361,7 @@ document_id,token,true_label,pred_label
 10724,the,O,O
 10724,implementation,O,O
 10724,.,O,O
-10724,Ankit,B-NAME_STUDENT,B-NAME_STUDENT
+10724,Ankit,B-NAME_STUDENT,O
 10724,Paul,I-NAME_STUDENT,I-NAME_STUDENT
 10724,Learning,O,O
 10724,Launch,O,O
@@ -303374,7 +303374,7 @@ document_id,token,true_label,pred_label
 10880,FOR,O,O
 10880,INNOVATION,O,O
 10880,Leslie,B-NAME_STUDENT,B-NAME_STUDENT
-10880,Young,I-NAME_STUDENT,I-NAME_STUDENT
+10880,Young,I-NAME_STUDENT,O
 10880,PEER,O,O
 10880,REVIEW,O,O
 10880,ASSIGNMENT,O,O
@@ -318306,7 +318306,7 @@ document_id,token,true_label,pred_label
 11068,.,O,O
 11068,Philosopher,O,O
 11068,Ramon,O,O
-11068,Llull,O,O
+11068,Llull,O,I-NAME_STUDENT
 11068,(,O,O
 11068,1235,O,O
 11068,–,O,O
@@ -323231,7 +323231,7 @@ document_id,token,true_label,pred_label
 11116,cream,O,O
 11116,Daniel,O,O
 11116,and,O,O
-11116,Enrique,O,B-NAME_STUDENT
+11116,Enrique,O,O
 11116,took,O,O
 11116,almost,O,O
 11116,three,O,O
@@ -324357,8 +324357,8 @@ document_id,token,true_label,pred_label
 11128,train,O,O
 11128,all,O,O
 11128,the,O,O
-11128,Pasquale,B-NAME_STUDENT,B-NAME_STUDENT
-11128,Bergamo,I-NAME_STUDENT,I-NAME_STUDENT
+11128,Pasquale,B-NAME_STUDENT,O
+11128,Bergamo,I-NAME_STUDENT,O
 11128,employees,O,O
 11128,",",O,O
 11128,who,O,O
@@ -330322,11 +330322,11 @@ document_id,token,true_label,pred_label
 11208,A,O,O
 11208,Reply,O,O
 11208,to,O,O
-11208,Santiago,B-NAME_STUDENT,B-NAME_STUDENT
-11208,Suarez,I-NAME_STUDENT,I-NAME_STUDENT
+11208,Santiago,B-NAME_STUDENT,O
+11208,Suarez,I-NAME_STUDENT,O
 11208,by,O,O
-11208,Glen,O,B-NAME_STUDENT
-11208,Styles,O,I-NAME_STUDENT
+11208,Glen,O,O
+11208,Styles,O,O
 11208,Dear,O,O
 11208,Environment,O,O
 11208,Today,O,O
@@ -331478,8 +331478,8 @@ document_id,token,true_label,pred_label
 11228,2019,O,O
 11228,BRAND,O,O
 11228,:,O,O
-11228,Doña,O,O
-11228,María,O,O
+11228,Doña,O,B-NAME_STUDENT
+11228,María,O,I-NAME_STUDENT
 11228,–,O,O
 11228,ecological,O,O
 11228,clothing,O,O
@@ -332175,7 +332175,7 @@ document_id,token,true_label,pred_label
 11228,wear,O,O
 11228,from,O,O
 11228,Doña,O,O
-11228,María,O,O
+11228,María,O,I-NAME_STUDENT
 11228,.,O,O
 11232,Financing,O,O
 11232,Company,O,O
@@ -333373,10 +333373,10 @@ document_id,token,true_label,pred_label
 11240,https://d3c33hcgiwev3.cloudfront.net/yhzsTGFxEeWsVBKLSpTUPw.processed/full/360p/index.mp4?Expires=1596153600&Sign,O,B-URL_PERSONAL
 11240,ature,O,O
 11240,=,O,O
-11240,UzY0doKF3Rfigxhrtmks7dpRBTNOAoruzLI3GEM4pjd0uz7Fz8,O,O
+11240,UzY0doKF3Rfigxhrtmks7dpRBTNOAoruzLI3GEM4pjd0uz7Fz8,O,B-ID_NUM
 11240,~,O,O
 11240,G-,O,O
-11240,LFbx1CwR8Sxl9WMyiRlZvrvSP~9z8Zucq8k4DDlerDXpfgADT7ml2UQ,O,O
+11240,LFbx1CwR8Sxl9WMyiRlZvrvSP~9z8Zucq8k4DDlerDXpfgADT7ml2UQ,O,B-ID_NUM
 11240,-,O,O
 11240,QvdkDvkzlKx6bwLX3yAdhS4,O,O
 11240,~,O,O
@@ -337359,7 +337359,7 @@ document_id,token,true_label,pred_label
 11288,brings,O,O
 11288,The,O,O
 11288,day,O,O
-11288,Juan,B-NAME_STUDENT,B-NAME_STUDENT
+11288,Juan,B-NAME_STUDENT,O
 11288,was,O,O
 11288,born,O,O
 11288,",",O,O
@@ -337385,7 +337385,7 @@ document_id,token,true_label,pred_label
 11288,move,O,O
 11288,",",O,O
 11288,but,O,O
-11288,Juan,B-NAME_STUDENT,B-NAME_STUDENT
+11288,Juan,B-NAME_STUDENT,O
 11288,and,O,O
 11288,my,O,O
 11288,father,O,O
@@ -345607,7 +345607,7 @@ document_id,token,true_label,pred_label
 11376,the,O,O
 11376,story,O,O
 11376,of,O,O
-11376,Javier,O,O
+11376,Javier,O,B-NAME_STUDENT
 11376,and,O,O
 11376,about,O,O
 11376,his,O,O
@@ -345660,7 +345660,7 @@ document_id,token,true_label,pred_label
 11376,to,O,O
 11376,do,O,O
 11376,.,O,O
-11376,Javier,O,O
+11376,Javier,O,B-NAME_STUDENT
 11376,’s,O,O
 11376,story,O,O
 11376,One,O,O
@@ -345681,7 +345681,7 @@ document_id,token,true_label,pred_label
 11376,I,O,O
 11376,stop,O,O
 11376,by,O,O
-11376,Javier,O,O
+11376,Javier,O,B-NAME_STUDENT
 11376,’s,O,O
 11376,table,O,O
 11376,to,O,O
@@ -346034,7 +346034,7 @@ document_id,token,true_label,pred_label
 11376,story,O,O
 11376,explaining,O,O
 11376,how,O,O
-11376,Fabio,O,O
+11376,Fabio,O,B-NAME_STUDENT
 11376,helped,O,O
 11376,8,O,O
 11376,companies,O,O
@@ -346073,7 +346073,7 @@ document_id,token,true_label,pred_label
 11376,also,O,O
 11376,explain,O,O
 11376,them,O,O
-11376,Fabio,O,O
+11376,Fabio,O,B-NAME_STUDENT
 11376,is,O,O
 11376,able,O,O
 11376,to,O,O
@@ -349502,7 +349502,7 @@ document_id,token,true_label,pred_label
 11412,.,O,O
 11412,Selection,O,O
 11412,As,O,O
-11412,Yousef,O,O
+11412,Yousef,O,B-NAME_STUDENT
 11412,said,O,O
 11412,in,O,O
 11412,her,O,O
@@ -350188,7 +350188,7 @@ document_id,token,true_label,pred_label
 11412,as,O,O
 11412,mentioned,O,O
 11412,by,O,O
-11412,Yousef,O,O
+11412,Yousef,O,B-NAME_STUDENT
 11412,several,O,O
 11412,times,O,O
 11412,in,O,O
@@ -364428,9 +364428,9 @@ document_id,token,true_label,pred_label
 11548,national,O,O
 11548,university,O,O
 11548,called,O,O
-11548,Pedro,O,O
-11548,Ruiz,O,O
-11548,Gallo,O,O
+11548,Pedro,O,B-NAME_STUDENT
+11548,Ruiz,O,I-NAME_STUDENT
+11548,Gallo,O,I-NAME_STUDENT
 11548,",",O,O
 11548,which,O,O
 11548,may,O,O
@@ -367777,7 +367777,7 @@ document_id,token,true_label,pred_label
 11564,Yara,B-NAME_STUDENT,B-NAME_STUDENT
 11564,Cruz,I-NAME_STUDENT,I-NAME_STUDENT
 11564,.,O,O
-11564,Yara,B-NAME_STUDENT,B-NAME_STUDENT
+11564,Yara,B-NAME_STUDENT,O
 11564,is,O,O
 11564,a,O,O
 11564,creative,O,O
@@ -374556,7 +374556,7 @@ document_id,token,true_label,pred_label
 11628,By,O,O
 11628,Vito,B-NAME_STUDENT,B-NAME_STUDENT
 11628,Ivanov,I-NAME_STUDENT,I-NAME_STUDENT
-11628,May,O,O
+11628,May,O,I-NAME_STUDENT
 11628,2021,O,O
 11628,Challenge,O,O
 11628,I,O,O
@@ -387873,7 +387873,7 @@ document_id,token,true_label,pred_label
 11856,–,O,O
 11856,I,O,O
 11856,am,O,O
-11856,Geoff,O,B-NAME_STUDENT
+11856,Geoff,O,O
 11856,.,O,O
 11856,In,O,O
 11856,the,O,O
@@ -388687,7 +388687,7 @@ document_id,token,true_label,pred_label
 11864,Organization,O,O
 11864,3,O,O
 11864,.,O,O
-11864,Narayan,O,O
+11864,Narayan,O,B-NAME_STUDENT
 11864,’s,O,O
 11864,Once,O,O
 11864,we,O,O
@@ -392230,7 +392230,7 @@ document_id,token,true_label,pred_label
 11916,to,O,O
 11916,connect,O,O
 11916,with,O,O
-11916,Rosanna,O,O
+11916,Rosanna,O,B-NAME_STUDENT
 11916,Gonzalez,O,O
 11916,of,O,O
 11916,University,O,O
@@ -410282,7 +410282,7 @@ document_id,token,true_label,pred_label
 12120,Benjamin,B-NAME_STUDENT,B-NAME_STUDENT
 12120,Huerta,I-NAME_STUDENT,I-NAME_STUDENT
 12120,and,O,O
-12120,Elisangela,B-NAME_STUDENT,B-NAME_STUDENT
+12120,Elisangela,B-NAME_STUDENT,O
 12120,Madrid,O,O
 12124,Official,O,O
 12124,(,O,O
@@ -414988,7 +414988,7 @@ document_id,token,true_label,pred_label
 12184,Md,B-NAME_STUDENT,B-NAME_STUDENT
 12184,Ahamad,I-NAME_STUDENT,I-NAME_STUDENT
 12184,369615882777,B-ID_NUM,B-ID_NUM
-12184,Cs-1,O,O
+12184,Cs-1,O,B-ID_NUM
 12184,I,O,O
 12184,love,O,O
 12184,to,O,O
@@ -415318,7 +415318,7 @@ document_id,token,true_label,pred_label
 12184,enthusiastic,O,O
 12184,Pintu,B-NAME_STUDENT,B-NAME_STUDENT
 12184,Kumar,I-NAME_STUDENT,I-NAME_STUDENT
-12184,Ajay,I-NAME_STUDENT,B-NAME_STUDENT
+12184,Ajay,I-NAME_STUDENT,I-NAME_STUDENT
 12184,Rana,I-NAME_STUDENT,I-NAME_STUDENT
 12184,264945858442,B-ID_NUM,B-ID_NUM
 12184,Are,O,O
@@ -415349,7 +415349,7 @@ document_id,token,true_label,pred_label
 12184,fashionable,O,O
 12184,and,O,O
 12184,smart,O,O
-12184,Chiara,B-NAME_STUDENT,B-NAME_STUDENT
+12184,Chiara,B-NAME_STUDENT,O
 12184,320622779078,B-ID_NUM,B-ID_NUM
 12184,Are,O,O
 12184,these,O,O
@@ -441435,11 +441435,11 @@ document_id,token,true_label,pred_label
 12512,SCIENCE,O,O
 12512,AND,O,O
 12512,TECHNOLOGY,O,O
-12512,Jordi,B-NAME_STUDENT,B-NAME_STUDENT
-12512,BOTANICAL,O,I-NAME_STUDENT
+12512,Jordi,B-NAME_STUDENT,O
+12512,BOTANICAL,O,O
 12512,GARDEN,O,O
 12512,",",O,O
-12512,Jordi,B-NAME_STUDENT,B-NAME_STUDENT
+12512,Jordi,B-NAME_STUDENT,O
 12512,",",O,O
 12512,HOWRAH-711103,O,O
 12512,Syed,B-NAME_STUDENT,B-NAME_STUDENT
@@ -443455,8 +443455,8 @@ document_id,token,true_label,pred_label
 12564,hygiene,O,O
 12564,company,O,O
 12564,called,O,O
-12564,Silvia,O,O
-12564,Fado,O,O
+12564,Silvia,O,B-NAME_STUDENT
+12564,Fado,O,I-NAME_STUDENT
 12564,(,O,O
 12564,https://www.campbell-silva.org/app/tagsauthor.html,B-URL_PERSONAL,B-URL_PERSONAL
 12564,),O,O
@@ -446308,7 +446308,7 @@ document_id,token,true_label,pred_label
 12596,",",O,O
 12596,written,O,O
 12596,by,O,O
-12596,Idris,O,O
+12596,Idris,O,B-NAME_STUDENT
 12596,Moote,O,O
 12596,",",O,O
 12596,founder,O,O
@@ -490116,8 +490116,8 @@ document_id,token,true_label,pred_label
 13116,Managers,O,O
 13116,”,O,O
 13116,by,O,O
-13116,Patrizia,O,O
-13116,Valdez,O,O
+13116,Patrizia,O,B-NAME_STUDENT
+13116,Valdez,O,I-NAME_STUDENT
 13116,",",O,O
 13116,our,O,O
 13116,core,O,O
@@ -499876,7 +499876,7 @@ document_id,token,true_label,pred_label
 13236,customer,O,O
 13236,.,O,O
 13236,As,O,O
-13236,Maritza,O,O
+13236,Maritza,O,B-NAME_STUDENT
 13236,Morales,O,O
 13236,explains,O,O
 13236,(,O,O
@@ -553518,7 +553518,7 @@ document_id,token,true_label,pred_label
 14116,Storytelling,O,O
 14116,video,O,O
 14116,featuring,O,O
-14116,Hassan,O,O
+14116,Hassan,O,B-NAME_STUDENT
 14116,Munoz,O,O
 14116,",",O,O
 14116,Chief,O,O
@@ -559744,7 +559744,7 @@ document_id,token,true_label,pred_label
 14236,video,O,O
 14236,by,O,O
 14236,Francisco,O,O
-14236,Garza,O,O
+14236,Garza,O,I-NAME_STUDENT
 14236,on,O,O
 14236,Storytelling,O,O
 14236,.,O,O
@@ -581382,11 +581382,11 @@ document_id,token,true_label,pred_label
 14540,that,O,O
 14540,if,O,O
 14540,founders,O,O
-14540,Sachin,O,O
-14540,Bansal,O,O
+14540,Sachin,O,B-NAME_STUDENT
+14540,Bansal,O,I-NAME_STUDENT
 14540,and,O,O
-14540,Binny,O,O
-14540,Bansal,O,O
+14540,Binny,O,B-NAME_STUDENT
+14540,Bansal,O,I-NAME_STUDENT
 14540,stepped,O,O
 14540,back,O,O
 14540,at,O,O
@@ -587647,8 +587647,8 @@ document_id,token,true_label,pred_label
 14620,”,O,O
 14620,video,O,O
 14620,by,O,O
-14620,Manu,O,O
-14620,Do,O,O
+14620,Manu,O,B-NAME_STUDENT
+14620,Do,O,I-NAME_STUDENT
 14620,.,O,O
 14620,The,O,O
 14620,idea,O,O
@@ -618184,8 +618184,8 @@ document_id,token,true_label,pred_label
 15032,Reflection,O,O
 15032,Educator,O,O
 15032,:,O,O
-15032,Valeria,O,O
-15032,Garcia,O,O
+15032,Valeria,O,B-NAME_STUDENT
+15032,Garcia,O,I-NAME_STUDENT
 15032,",",O,O
 15032,Lecturer,O,O
 15032,",",O,O
@@ -618773,8 +618773,8 @@ document_id,token,true_label,pred_label
 15032,reflection,O,O
 15032,activity,O,O
 15032,?,O,O
-15032,Mario,O,O
-15032,Busch,O,O
+15032,Mario,O,B-NAME_STUDENT
+15032,Busch,O,I-NAME_STUDENT
 15032,was,O,O
 15032,doing,O,O
 15032,reflection,O,O
@@ -636659,7 +636659,7 @@ document_id,token,true_label,pred_label
 15268,how,O,O
 15268,we,O,O
 15268,found,O,O
-15268,Antonio,O,O
+15268,Antonio,O,B-NAME_STUDENT
 15268,",",O,O
 15268,19,O,O
 15268,years,O,O
@@ -636714,7 +636714,7 @@ document_id,token,true_label,pred_label
 15268,Insight,O,O
 15268,We,O,O
 15268,asked,O,O
-15268,Antonio,O,O
+15268,Antonio,O,B-NAME_STUDENT
 15268,and,O,O
 15268,his,O,O
 15268,dad,O,O
@@ -644458,7 +644458,7 @@ document_id,token,true_label,pred_label
 15400,In,O,O
 15400,particular,O,O
 15400,",",O,O
-15400,Mario,O,O
+15400,Mario,O,B-NAME_STUDENT
 15400,",",O,O
 15400,once,O,O
 15400,moved,O,O
@@ -721060,8 +721060,8 @@ document_id,token,true_label,pred_label
 16396,daily,O,O
 16396,life,O,O
 16396,.,O,O
-16424,Mercedes,O,O
-16424,Benz,O,O
+16424,Mercedes,O,B-NAME_STUDENT
+16424,Benz,O,I-NAME_STUDENT
 16424,Classification,O,O
 16424,:,O,O
 16424,Internal,O,O
@@ -721339,8 +721339,8 @@ document_id,token,true_label,pred_label
 16424,future,O,O
 16424,education,O,O
 16424,.,O,O
-16424,Mercedes,O,O
-16424,Benz,O,O
+16424,Mercedes,O,B-NAME_STUDENT
+16424,Benz,O,I-NAME_STUDENT
 16424,Classification,O,O
 16424,:,O,O
 16424,Internal,O,O
@@ -734673,7 +734673,7 @@ document_id,token,true_label,pred_label
 16684,firm,O,O
 16684,.,O,O
 16684,Mr.,O,O
-16684,John,O,B-NAME_STUDENT
+16684,John,O,O
 16684,could,O,O
 16684,become,O,O
 16684,an,O,O
@@ -734709,7 +734709,7 @@ document_id,token,true_label,pred_label
 16684,pinnacle,O,O
 16684,.,O,O
 16684,Mr.,O,O
-16684,David,O,B-NAME_STUDENT
+16684,David,O,O
 16684,joined,O,O
 16684,an,O,O
 16684,engineering,O,O
@@ -794840,7 +794840,7 @@ document_id,token,true_label,pred_label
 17568,business,O,O
 17568,.,O,O
 17568,Once,O,O
-17568,Joana,O,O
+17568,Joana,O,B-NAME_STUDENT
 17568,was,O,O
 17568,done,O,O
 17568,talking,O,O
@@ -794947,7 +794947,7 @@ document_id,token,true_label,pred_label
 17568,my,O,O
 17568,story,O,O
 17568,",",O,O
-17568,Joana,O,O
+17568,Joana,O,B-NAME_STUDENT
 17568,smiled,O,O
 17568,",",O,O
 17568,sat,O,O
@@ -794977,7 +794977,7 @@ document_id,token,true_label,pred_label
 17568,then,O,O
 17568,explained,O,O
 17568,to,O,O
-17568,Joana,O,O
+17568,Joana,O,B-NAME_STUDENT
 17568,that,O,O
 17568,in,O,O
 17568,every,O,O
@@ -799197,8 +799197,8 @@ document_id,token,true_label,pred_label
 17632,CARE,O,O
 17632,Project,O,O
 17632,.,O,O
-17636,CRM,O,O
-17636,CALLENGE,O,O
+17636,CRM,O,B-NAME_STUDENT
+17636,CALLENGE,O,I-NAME_STUDENT
 17636,-,O,O
 17636,STORYTELLING,O,O
 17636,Challenge,O,O
@@ -806742,8 +806742,8 @@ document_id,token,true_label,pred_label
 17732,Learning,O,O
 17732,Lunch,O,O
 17732,–,O,O
-17732,Platinum,O,O
-17732,Anatolai,O,O
+17732,Platinum,O,B-NAME_STUDENT
+17732,Anatolai,O,B-NAME_STUDENT
 17732,Challenge,O,O
 17732,&,O,O
 17732,Selection,O,O
@@ -809542,7 +809542,7 @@ document_id,token,true_label,pred_label
 17776,the,O,O
 17776,Lecturer,O,O
 17776,",",O,O
-17776,Cristiane,O,B-NAME_STUDENT
+17776,Cristiane,O,O
 17776,",",O,O
 17776,is,O,O
 17776,a,O,O
@@ -827617,7 +827617,7 @@ document_id,token,true_label,pred_label
 18008,Challenge,O,O
 18008,and,O,O
 18008,Selection,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,is,O,O
 18008,now,O,O
 18008,a,O,O
@@ -827689,7 +827689,7 @@ document_id,token,true_label,pred_label
 18008,me,O,O
 18008,explain,O,O
 18008,to,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,why,O,O
 18008,it,O,O
 18008,was,O,O
@@ -827714,7 +827714,7 @@ document_id,token,true_label,pred_label
 18008,could,O,O
 18008,gradually,O,O
 18008,get,O,O
-18008,Vincent,O,O
+18008,Vincent,O,B-NAME_STUDENT
 18008,to,O,O
 18008,engage,O,O
 18008,in,O,O
@@ -828073,7 +828073,7 @@ document_id,token,true_label,pred_label
 18008,step,O,O
 18008,by,O,O
 18008,step,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,started,O,O
 18008,to,O,O
 18008,believe,O,O
@@ -828151,7 +828151,7 @@ document_id,token,true_label,pred_label
 18008,that,O,O
 18008,first,O,O
 18008,evaluation,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,'s,O,O
 18008,motivation,O,O
 18008,increased,O,O
@@ -828196,11 +828196,11 @@ document_id,token,true_label,pred_label
 18008,I,O,O
 18008,continue,O,O
 18008,teaching,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,and,O,O
 18008,his,O,O
 18008,sister,O,O
-18008,Carmen,O,O
+18008,Carmen,O,B-NAME_STUDENT
 18008,who,O,O
 18008,also,O,O
 18008,wanted,O,O
@@ -828217,7 +828217,7 @@ document_id,token,true_label,pred_label
 18008,I,O,O
 18008,used,O,O
 18008,with,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,.,O,O
 18008,One,O,O
 18008,of,O,O
@@ -828233,7 +828233,7 @@ document_id,token,true_label,pred_label
 18008,some,O,O
 18008,occasion,O,O
 18008,caused,O,O
-18008,Vicente,O,O
+18008,Vicente,O,B-NAME_STUDENT
 18008,to,O,O
 18008,care,O,O
 18008,more,O,O
@@ -834910,7 +834910,7 @@ document_id,token,true_label,pred_label
 18104,concept,O,O
 18104,of,O,O
 18104,"""",O,O
-18104,Lori,O,B-NAME_STUDENT
+18104,Lori,O,O
 18104,Morgan,O,B-NAME_STUDENT
 18104,"""",O,O
 18104,.,O,O
@@ -847471,7 +847471,7 @@ document_id,token,true_label,pred_label
 18256,.,O,O
 18256,Reference,O,O
 18256,:,O,O
-18256,Brenda,O,O
+18256,Brenda,O,B-NAME_STUDENT
 18256,Mata,O,O
 18256,[,O,O
 18256,Mars,O,O
@@ -865361,7 +865361,7 @@ document_id,token,true_label,pred_label
 18500,The,O,O
 18500,problem,O,O
 18500,of,O,O
-18500,Raisa,O,O
+18500,Raisa,O,B-NAME_STUDENT
 18500,Fyodorovna,O,O
 18500,should,O,O
 18500,ﬁnd,O,O
@@ -865451,7 +865451,7 @@ document_id,token,true_label,pred_label
 18500,and,O,O
 18500,interestingly,O,O
 18500,.,O,O
-18536,Tamakani,O,O
+18536,Tamakani,O,B-NAME_STUDENT
 18536,:,O,O
 18536,Company,O,O
 18536,General,O,O
@@ -882719,7 +882719,7 @@ document_id,token,true_label,pred_label
 18804,primary,O,O
 18804,persona,O,O
 18804,",",O,O
-18804,Javier,O,O
+18804,Javier,O,B-NAME_STUDENT
 18804,who,O,O
 18804,had,O,O
 18804,invested,O,O
@@ -883050,7 +883050,7 @@ document_id,token,true_label,pred_label
 18804,the,O,O
 18804,hero,O,O
 18804,(,O,O
-18804,Javier,O,O
+18804,Javier,O,B-NAME_STUDENT
 18804,),O,O
 18804,to,O,O
 18804,make,O,O
@@ -896631,8 +896631,8 @@ document_id,token,true_label,pred_label
 19028,",",O,O
 19028,”,O,O
 19028,said,O,O
-19028,Francesco,O,O
-19028,Mehmood,O,O
+19028,Francesco,O,B-NAME_STUDENT
+19028,Mehmood,O,I-NAME_STUDENT
 19028,",",O,O
 19028,an,O,O
 19028,Universidad,O,O
@@ -902541,7 +902541,7 @@ document_id,token,true_label,pred_label
 19104,client,O,O
 19104,.,O,O
 19104,Name,O,O
-19104,Anthony,O,O
+19104,Anthony,O,B-NAME_STUDENT
 19104,Johnson,O,I-NAME_STUDENT
 19104,.,O,O
 19104,Title,O,O
@@ -902637,7 +902637,7 @@ document_id,token,true_label,pred_label
 19104,Reach,O,O
 19104,out,O,O
 19104,to,O,O
-19104,Anthony,O,O
+19104,Anthony,O,B-NAME_STUDENT
 19104,via,O,O
 19104,cold,O,O
 19104,email,O,O
@@ -931732,7 +931732,7 @@ document_id,token,true_label,pred_label
 19480,",",O,O
 19480,(,O,O
 19480,like,O,O
-19480,trello.com,O,O
+19480,trello.com,O,B-EMAIL
 19480,),O,O
 19480,because,O,O
 19480,we,O,O
@@ -958590,8 +958590,8 @@ document_id,token,true_label,pred_label
 19864,in,O,O
 19864,collaboration,O,O
 19864,.,O,O
-19872,Instituto,O,O
-19872,Loureiro,O,O
+19872,Instituto,O,B-NAME_STUDENT
+19872,Loureiro,O,I-NAME_STUDENT
 19872,:,O,O
 19872,Company,O,O
 19872,General,O,O
@@ -964241,8 +964241,8 @@ document_id,token,true_label,pred_label
 19936,Reflection,O,O
 19936,–,O,O
 19936,Storytelling,O,O
-19936,Cachet,O,O
-19936,Prescott,O,O
+19936,Cachet,O,B-NAME_STUDENT
+19936,Prescott,O,I-NAME_STUDENT
 19936,Challenge,O,O
 19936,+,O,O
 19936,Selection,O,O
@@ -1011684,7 +1011684,7 @@ document_id,token,true_label,pred_label
 20644,by,O,O
 20644,shareholder,O,O
 20644,Richard,O,O
-20644,Tornetta,O,O
+20644,Tornetta,O,I-NAME_STUDENT
 20644,",",O,O
 20644,which,O,O
 20644,says,O,O
@@ -1035801,7 +1035801,7 @@ document_id,token,true_label,pred_label
 20984,–,O,O
 20984,Visualization,O,O
 20984,Tool,O,O
-20984,V69230,B-ID_NUM,O
+20984,V69230,B-ID_NUM,B-ID_NUM
 20984,Challenge,O,O
 20984,&,O,O
 20984,Selection,O,O
@@ -1039860,7 +1039860,7 @@ document_id,token,true_label,pred_label
 21080,Mapping,O,O
 21080,brief,O,O
 21080,by,O,O
-21080,Martina,O,O
+21080,Martina,O,B-NAME_STUDENT
 21080,Garcia,O,O
 21080,",",O,O
 21080,I,O,O
@@ -1076265,7 +1076265,7 @@ document_id,token,true_label,pred_label
 21524,is,O,O
 21524,optional,O,O
 21524,–,O,O
-21524,John,O,B-NAME_STUDENT
+21524,John,O,O
 21524,Maxell,O,I-NAME_STUDENT
 21524,.,O,O
 21524,I,O,O
@@ -1081432,8 +1081432,8 @@ document_id,token,true_label,pred_label
 21564,new,O,O
 21564,things,O,O
 21564,.,O,O
-21564,Chesdin,O,O
-21564,Harrington,O,O
+21564,Chesdin,O,B-NAME_STUDENT
+21564,Harrington,O,I-NAME_STUDENT
 21564,Design,O,O
 21564,Thinking,O,O
 21564,for,O,O
@@ -1083194,8 +1083194,8 @@ document_id,token,true_label,pred_label
 21576,.,O,O
 21580,Reflection:​,O,O
 21580,​Visualization,O,O
-21580,Christopher​,O,O
-21580,​Thorborg,O,O
+21580,Christopher​,O,B-NAME_STUDENT
+21580,​Thorborg,O,I-NAME_STUDENT
 21580,Challenge,O,O
 21580,I​,O,O
 21580,​work​,O,O
@@ -1106596,7 +1106596,7 @@ document_id,token,true_label,pred_label
 21924,own,O,O
 21924,daughter,O,O
 21924,",",O,O
-21924,Linda,O,O
+21924,Linda,O,B-NAME_STUDENT
 21924,",",O,O
 21924,Mary,O,O
 21924,’s,O,O
@@ -1108301,8 +1108301,8 @@ document_id,token,true_label,pred_label
 21940,Audience,O,O
 21940,Testing,O,O
 21940,–,O,O
-21940,Tim,O,O
-21940,Chi,O,O
+21940,Tim,O,B-NAME_STUDENT
+21940,Chi,O,I-NAME_STUDENT
 21940,Video,O,O
 21940,on,O,O
 21940,rapid,O,O
@@ -1108375,8 +1108375,8 @@ document_id,token,true_label,pred_label
 21940,users,O,O
 21940,”,O,O
 21940,by,O,O
-21940,Jan,O,O
-21940,Chipchase,O,O
+21940,Jan,O,B-NAME_STUDENT
+21940,Chipchase,O,I-NAME_STUDENT
 21940,Exercise,O,O
 21940,:,O,O
 21940,Peer,O,O
@@ -1108491,8 +1108491,8 @@ document_id,token,true_label,pred_label
 21940,Gets,O,O
 21940,Results,O,O
 21940,",",O,O
-21940,Daniel,O,O
-21940,Goleman,O,O
+21940,Daniel,O,B-NAME_STUDENT
+21940,Goleman,O,I-NAME_STUDENT
 21940,+,O,O
 21940,Complete,O,O
 21940,Peer,O,O
@@ -1116255,10 +1116255,10 @@ document_id,token,true_label,pred_label
 22088,Assignment,O,O
 22088,:,O,O
 22088,Reflection,O,O
-22088,María,O,O
-22088,José,O,O
-22088,Reyes,O,O
-22088,Ecuador,O,O
+22088,María,O,B-NAME_STUDENT
+22088,José,O,I-NAME_STUDENT
+22088,Reyes,O,I-NAME_STUDENT
+22088,Ecuador,O,I-NAME_STUDENT
 22088,",",O,O
 22088,March,O,O
 22088,2018,O,O
@@ -1133571,7 +1133571,7 @@ document_id,token,true_label,pred_label
 22332,mapping,O,O
 22332,tool,O,O
 22332,“,O,O
-22332,​https://www.mindmeister.com​,O,O
+22332,​https://www.mindmeister.com​,O,B-URL_PERSONAL
 22332,”,O,O
 22332,which,O,O
 22332,lets,O,O
