@@ -1,42 +1,42 @@
 {
   "token_level": {
-    "precision": 0.8645,
-    "recall": 0.9696,
-    "f1": 0.914,
-    "total_tp": 638,
-    "total_fp": 100,
-    "total_fn": 20,
+    "precision": 0.7197,
+    "recall": 0.8936,
+    "f1": 0.7973,
+    "total_tp": 588,
+    "total_fp": 229,
+    "total_fn": 70,
     "per_class": {
       "B-EMAIL": {
-        "precision": 1.0,
+        "precision": 0.8889,
         "recall": 1.0,
-        "f1": 1.0,
+        "f1": 0.9412,
         "tp": 8,
-        "fp": 0,
+        "fp": 1,
         "fn": 0
       },
       "B-ID_NUM": {
-        "precision": 0.6571,
+        "precision": 0.5227,
         "recall": 0.92,
-        "f1": 0.7667,
+        "f1": 0.6667,
         "tp": 23,
-        "fp": 12,
+        "fp": 21,
         "fn": 2
       },
       "B-NAME_STUDENT": {
-        "precision": 0.9139,
-        "recall": 0.9625,
-        "f1": 0.9376,
-        "tp": 308,
-        "fp": 29,
-        "fn": 12
+        "precision": 0.718,
+        "recall": 0.8594,
+        "f1": 0.7824,
+        "tp": 275,
+        "fp": 108,
+        "fn": 45
       },
       "B-URL_PERSONAL": {
-        "precision": 0.3623,
+        "precision": 0.3571,
         "recall": 1.0,
-        "f1": 0.5319,
+        "f1": 0.5263,
         "tp": 25,
-        "fp": 44,
+        "fp": 45,
         "fn": 0
       },
       "B-USERNAME": {
@@ -56,22 +56,22 @@
         "fn": 1
       },
       "I-NAME_STUDENT": {
-        "precision": 0.9481,
-        "recall": 0.9856,
-        "f1": 0.9665,
-        "tp": 274,
-        "fp": 15,
-        "fn": 4
+        "precision": 0.8264,
+        "recall": 0.9245,
+        "f1": 0.8727,
+        "tp": 257,
+        "fp": 54,
+        "fn": 21
       }
     }
   },
   "entity_level": {
-    "precision": 0.7987,
-    "recall": 0.9525,
-    "f1": 0.8688,
-    "total_tp": 361,
-    "total_fp": 91,
-    "total_fn": 18
+    "precision": 0.6146,
+    "recall": 0.8417,
+    "f1": 0.7105,
+    "total_tp": 319,
+    "total_fp": 200,
+    "total_fn": 60
   },
   "model": "hybrid",
   "total_tokens": 1161421

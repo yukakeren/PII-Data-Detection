@@ -1,0 +1,102 @@
+{
+  "token_level": {
+    "precision": 0.5978,
+    "recall": 0.5669,
+    "f1": 0.5819,
+    "total_tp": 373,
+    "total_fp": 251,
+    "total_fn": 285,
+    "per_class": {
+      "B-EMAIL": {
+        "precision": 0.8889,
+        "recall": 1.0,
+        "f1": 0.9412,
+        "tp": 8,
+        "fp": 1,
+        "fn": 0
+      },
+      "B-ID_NUM": {
+        "precision": 0.5714,
+        "recall": 0.64,
+        "f1": 0.6038,
+        "tp": 16,
+        "fp": 12,
+        "fn": 9
+      },
+      "B-NAME_STUDENT": {
+        "precision": 0.8224,
+        "recall": 0.55,
+        "f1": 0.6592,
+        "tp": 176,
+        "fp": 38,
+        "fn": 144
+      },
+      "B-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 0
+      },
+      "B-URL_PERSONAL": {
+        "precision": 0.3889,
+        "recall": 0.84,
+        "f1": 0.5316,
+        "tp": 21,
+        "fp": 33,
+        "fn": 4
+      },
+      "B-USERNAME": {
+        "precision": 0.0179,
+        "recall": 1.0,
+        "f1": 0.0351,
+        "tp": 1,
+        "fp": 55,
+        "fn": 0
+      },
+      "I-ID_NUM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 6,
+        "fn": 1
+      },
+      "I-NAME_STUDENT": {
+        "precision": 0.8118,
+        "recall": 0.5432,
+        "f1": 0.6509,
+        "tp": 151,
+        "fp": 35,
+        "fn": 127
+      },
+      "I-PHONE_NUM": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 12,
+        "fn": 0
+      },
+      "I-STREET_ADDRESS": {
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 49,
+        "fn": 0
+      }
+    }
+  },
+  "entity_level": {
+    "precision": 0.4683,
+    "recall": 0.5066,
+    "f1": 0.4867,
+    "total_tp": 192,
+    "total_fp": 218,
+    "total_fn": 187
+  },
+  "model": "distilbert_balance",
+  "total_tokens": 1161421
+}
