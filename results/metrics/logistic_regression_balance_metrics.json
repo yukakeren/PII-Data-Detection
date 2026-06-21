@@ -1,90 +1,66 @@
 {
   "token_level": {
-    "precision": 0.0009,
-    "recall": 0.9605,
-    "f1": 0.0018,
-    "total_tp": 632,
-    "total_fp": 703914,
-    "total_fn": 26,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0,
+    "total_tp": 0,
+    "total_fp": 2719,
+    "total_fn": 541,
     "per_class": {
       "B-EMAIL": {
-        "precision": 0.0003,
-        "recall": 1.0,
-        "f1": 0.0006,
-        "tp": 8,
-        "fp": 26907,
-        "fn": 0
-      },
-      "B-ID_NUM": {
-        "precision": 0.0027,
-        "recall": 0.72,
-        "f1": 0.0054,
-        "tp": 18,
-        "fp": 6656,
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
         "fn": 7
       },
+      "B-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 15
+      },
       "B-NAME_STUDENT": {
-        "precision": 0.0024,
-        "recall": 0.9844,
-        "f1": 0.0048,
-        "tp": 315,
-        "fp": 131086,
-        "fn": 5
-      },
-      "B-PHONE_NUM": {
-        "precision": 0.0,
-        "recall": 0,
+        "precision": 0,
+        "recall": 0.0,
         "f1": 0,
         "tp": 0,
-        "fp": 3496,
-        "fn": 0
-      },
-      "B-STREET_ADDRESS": {
-        "precision": 0.0,
-        "recall": 0,
-        "f1": 0,
-        "tp": 0,
-        "fp": 5950,
-        "fn": 0
+        "fp": 0,
+        "fn": 266
       },
       "B-URL_PERSONAL": {
-        "precision": 0.0003,
-        "recall": 1.0,
-        "f1": 0.0005,
-        "tp": 25,
-        "fp": 91398,
-        "fn": 0
-      },
-      "B-USERNAME": {
-        "precision": 0.0,
-        "recall": 1.0,
-        "f1": 0.0,
-        "tp": 1,
-        "fp": 314340,
-        "fn": 0
-      },
-      "I-ID_NUM": {
         "precision": 0.0,
         "recall": 0.0,
         "f1": 0,
         "tp": 0,
-        "fp": 4578,
+        "fp": 266,
+        "fn": 23
+      },
+      "I-ID_NUM": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
         "fn": 1
       },
       "I-NAME_STUDENT": {
-        "precision": 0.0037,
-        "recall": 0.9532,
-        "f1": 0.0073,
-        "tp": 265,
-        "fp": 72117,
-        "fn": 13
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 6,
+        "fn": 229
       },
       "I-PHONE_NUM": {
         "precision": 0.0,
         "recall": 0,
         "f1": 0,
         "tp": 0,
-        "fp": 5852,
+        "fp": 99,
         "fn": 0
       },
       "I-STREET_ADDRESS": {
@@ -92,19 +68,19 @@
         "recall": 0,
         "f1": 0,
         "tp": 0,
-        "fp": 41534,
+        "fp": 2348,
         "fn": 0
       }
     }
   },
   "entity_level": {
-    "precision": 0.0002,
-    "recall": 0.3008,
-    "f1": 0.0004,
-    "total_tp": 114,
-    "total_fp": 633321,
-    "total_fn": 265
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0,
+    "total_tp": 0,
+    "total_fp": 2715,
+    "total_fn": 311
   },
   "model": "logistic_regression_balance",
-  "total_tokens": 1260090
+  "total_tokens": 1051063
 }
